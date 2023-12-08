@@ -1,6 +1,9 @@
+// css 
 import "@/styles/bootstrap.css";
 import "@/styles/bootstrap-un.css";
 import "@/styles/font-awesome.min.css";
+import '@/styles/dashboard.css'
+import '@/styles/responsive.css'
 
 // other imports
 import { ethers } from "ethers";
@@ -12,6 +15,7 @@ import { AnonAadhaarProvider } from "anon-aadhaar-react";
 const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
 
 export default function App({ Component, pageProps }) {
+
   const connect_wallet = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.ready;

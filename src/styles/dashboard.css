@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboardContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: #eeeeee;
+  height: 100%;
+  width: 100%;
+  font-family: "poppins", sans-serif;
+}
+
+.dashboardContainer .fixedNavigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  overflow-y: scroll;
+}
+
+.dashboardContainer .fixedNavigation.hideNav {
+  display: none;
+}
+
+.dashboardContainer .fixedNavigation .fixedNavigationHead h2 {
+  text-transform: uppercase;
+  font-size: 25px;
+  text-align: center;
+  margin: 12px 0;
+}
+
+.dashboardContainer .fixedNavigation .fixedNavigationBody .dashboardComponents {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponentsAdmin {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #b3b3b3;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponents:hover {
+  background-color: #ebebeb;
+}
+
+.navigationActive {
+  background-color: #f3f3f3;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponents
+  a {
+  text-decoration: none;
+  color: #000;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponents
+  a
+  i {
+  color: #24252e;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponentsAdmin
+  a {
+  text-decoration: none;
+  color: #000;
+}
+
+.dashboardContainer
+  .fixedNavigation
+  .fixedNavigationBody
+  .dashboardComponentsAdmin
+  a
+  i {
+  color: rgb(253, 5, 5);
+}
+
+/* contentContainer styling here  */
+
+.dashboardContainer .contentContainer {
+  height: 100%;
+  width: 100%;
+  margin-left: 250px;
+  border-left: 2px solid #ebebeb;
+}
+
+.dashboardContainer .contentContainer.hideNav {
+  margin-left: 0;
+}
+
+.dashboardContainer .contentContainer .contentContainerHead {
+  height: 140px;
+  width: 100%;
+  background-color: #24252e;
+  position: relative;
+}
+
+.dashboardContainer .contentContainer .contentContainerHead .hamIcon {
+  position: absolute;
+  left: 2%;
+  top: 15%;
+}
+
+.dashboardContainer .contentContainer .contentContainerHead .hamIcon i {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.dashboardContainer .contentContainer .contentContainerHead .logout {
+  position: absolute;
+  right: 3%;
+  top: 15%;
+}
+
+.dashboardContainer
+  .contentContainer
+  .contentContainerHead
+  .logout
+  form
+  button {
+  padding: 5px 10px;
+  background-color: #443c6b;
+  color: #fff;
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dashboardContainer
+  .contentContainer
+  .contentContainerHead
+  .logout
+  form
+  button:hover {
+  background-color: #443c6b;
+}
+
+.dashboardContainer .contentContainer .contentTitle {
+  background-color: #ffffff;
+  position: absolute;
+  bottom: -20%;
+  width: 90%;
+  margin: 0 20px;
+  border-radius: 5px;
+}
+
+.dashboardContainer .contentContainer .contentTitle h2 {
+  padding: 10px 6px;
+}
+
+.dashboardContainer .contentContainer .contentContainerBody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 60px 20px;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dashboardContainer .contentContainer .contentContainerBodyFlex {
+  flex-direction: row;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox .helpAreaFlex {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  height: 100%;
+  width: 50%;
+  padding: 10px;
+  background-color: #e2e2e2;
+  box-shadow: 2px 2px 20px 1px #a3a3a3;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox .helpAreaFlex code {
+  height: 100%;
+  width: 100%;
+  padding: 25px 10px;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox .helpAreaFlex h1 {
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #ff1d43;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox .helpAreaFlex h2 {
+  font-size: 22px;
+  text-transform: uppercase;
+  margin: 8px 0;
+}
+
+.dashboardContainer .contentContainer .helpAreaBox .helpAreaFlex p {
+  font-size: 16px;
+}
+
+.dashboardContainer .contentContainer .contentContainerBody .usersCountLive {
+  margin: 10px;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 260px;
+  height: 100px;
+}
+
+.dashboardContainer
+  .contentContainer
+  .contentContainerBody
+  .usersCountLive
+  .userCountIcon {
+  background-color: #24252e;
+  padding: 25px 25px;
+  border-radius: 5px;
+  margin-right: 12px;
+}
+
+.dashboardContainer
+  .contentContainer
+  .contentContainerBody
+  .usersCountLive
+  .userCountIcon
+  i {
+  color: #ffff;
+  font-size: 25px;
+}
