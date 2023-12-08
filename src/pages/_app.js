@@ -10,18 +10,16 @@ import { ChakraProvider } from "@chakra-ui/react";
 export default function App({ Component, pageProps }) {
   const connect_wallet = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
-
+    await provider.ready;
     await provider.send("eth_requestAccounts", []);
     const signer = provider.getSigner();
-    console.log(signer);
+    const walletAddress = await signer.getAddress();
+    console.log({ walletAddress });
   };
-  useEffect(() => {
-    connect_wallet();
-  }, []);
 
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <Component {...pageProps} connect_wallet={connect_wallet} />
     </ChakraProvider>
   );
 }
