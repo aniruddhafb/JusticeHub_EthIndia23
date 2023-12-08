@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
+    "anon-aadhaar-react": "^0.1.13",
+    "crypto": "^1.0.1",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
