@@ -36,12 +36,9 @@ export default function Home() {
               </ul>
             </div>
             <div className="quote_btn-container">
-              {/* <Link href="/dashboard">
-                <span>
-                  Signup
-                </span>
-              </Link> */}
               <BtnModal />
+            </div>
+            <div>
             </div>
           </div>
         </nav>

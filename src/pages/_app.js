@@ -2,10 +2,14 @@ import "@/styles/bootstrap.css";
 import "@/styles/bootstrap-un.css";
 import "@/styles/font-awesome.min.css";
 
+// other imports
 import { ethers } from "ethers";
 import { useEffect } from "react";
-// other imports
 import { ChakraProvider } from "@chakra-ui/react";
+import crypto from "crypto";
+import { AnonAadhaarProvider } from "anon-aadhaar-react";
+
+const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
 
 export default function App({ Component, pageProps }) {
   const connect_wallet = async () => {
@@ -21,7 +25,9 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ChakraProvider>
+          <AnonAadhaarProvider _appId={app_id}>
       <Component {...pageProps} />
+      </AnonAadhaarProvider>
     </ChakraProvider>
   );
 }
