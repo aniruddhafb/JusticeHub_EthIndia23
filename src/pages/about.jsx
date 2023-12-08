@@ -1,46 +1,45 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import BtnModal from './components/BtnModal'
 
 const about = () => {
     return (
         <>
             {/* navbar  */}
             <header className="header_section long_section px-0">
-                <nav className="navbar navbar-expand-lg custom_nav-container ">
-                    <Link className="navbar-brand" href="/">
-                        <span>
-                            JusticeHub
-                        </span>
-                    </Link>
-                    <button className="navbar-toggler" type="button">
-                        <span className=""> </span>
-                    </button>
+        <nav className="navbar navbar-expand-lg custom_nav-container ">
+          <Link className="navbar-brand" href="/">
+            <span>
+              JusticeHub
+            </span>
+          </Link>
+          <button className="navbar-toggler" type="button">
+            <span className=""> </span>
+          </button>
 
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
-                            <ul className="navbar-nav  ">
-                                <li className="nav-item active">
-                                    <a className="nav-link" href="/">Home</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/about">About</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" href="/features">Features</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="quote_btn-container">
-                            <Link href="/dashboard">
-                                <span>
-                                    Signup
-                                </span>
-                            </Link>
-                        </div>
-                    </div>
-                </nav>
-            </header>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul className="navbar-nav  ">
+                <li className="nav-item active">
+                  <Link className="nav-link" href="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/about">About</Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" href="/features">Features</Link>
+                </li>
+              </ul>
+            </div>
+            <div className="quote_btn-container">
+              <BtnModal />
+            </div>
+            <div>
+            </div>
+          </div>
+        </nav>
+      </header>
 
             <section className="about_section layout_padding long_section">
                 <div className="container">
@@ -58,7 +57,8 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti dolorem eum consequuntur ipsam repellat dolor soluta aliquid laborum, eius odit consectetur vel quasi in quidem, eveniet ab est corporis tempore.
+                                    JusticHub is a platform where indian citizens can file complaints, view their complains and challans with evidences, can consult advocates, and many more.
+                                    Building the impossible  💪
                                 </p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ const about = () => {
                             Supported Chains
                         </h2>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum obcaecati aliquid magni sint dicta maxime laborum consequatur! Deserunt minus nostrum excepturi eligendi voluptatum laboriosam cupiditate.
+                            We are deployed on the following chains
                         </p>
                     </div>
                     <div className="row">

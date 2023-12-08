@@ -25,13 +25,13 @@ export default function Home() {
             <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
               <ul className="navbar-nav  ">
                 <li className="nav-item active">
-                  <a className="nav-link" href="/">Home</a>
+                  <Link className="nav-link" href="/">Home</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/about">About</a>
+                  <Link className="nav-link" href="/about">About</Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/features">Features</a>
+                  <Link className="nav-link" href="/features">Features</Link>
                 </li>
               </ul>
             </div>
@@ -54,11 +54,10 @@ export default function Home() {
                   <div className="col-md-5">
                     <div className="detail-box">
                       <h1>
-                        One Stop Soltion <br />
-                        For All Your Legal Needs!!
+                      Navigate Justice Effortlessly with JusticeHub !!
                       </h1>
                       <p>
-                        File complaints, view challans, hire advocates, consults police and judges and many more things in one place 😎
+                        File complaints, view fir public records, view challans, consult advocates and many more things in one place 😎
                       </p>
                       <div className="btn-box">
                         <Link href="/about" className="btn1">
@@ -72,7 +71,7 @@ export default function Home() {
                   </div>
                   <div className="col-md-7">
                     <div className="img-box">
-                      <img src="images/slider-img.png" alt="" />
+                      <img src="/police.png" alt="" style={{height:"560px"}} />
                     </div>
                   </div>
                 </div>
