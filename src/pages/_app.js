@@ -1,8 +1,11 @@
 import "@/styles/bootstrap.css";
 import "@/styles/bootstrap-un.css";
 import "@/styles/font-awesome.min.css";
+
 import { ethers } from "ethers";
 import { useEffect } from "react";
+// other imports
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }) {
   const connect_wallet = async () => {
@@ -15,5 +18,10 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     connect_wallet();
   }, []);
-  return <Component {...pageProps} />;
+
+  return (
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
 }
