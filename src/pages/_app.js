@@ -1,14 +1,27 @@
-import '@/styles/bootstrap.css'
-import '@/styles/bootstrap-un.css'
-import '@/styles/font-awesome.min.css'
+import "@/styles/bootstrap.css";
+import "@/styles/bootstrap-un.css";
+import "@/styles/font-awesome.min.css";
 
-// other imports 
-import { ChakraProvider } from '@chakra-ui/react'
+import { ethers } from "ethers";
+import { useEffect } from "react";
+// other imports
+import { ChakraProvider } from "@chakra-ui/react";
 
 export default function App({ Component, pageProps }) {
-  return(
+  const connect_wallet = async () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    console.log(signer);
+  };
+  useEffect(() => {
+    connect_wallet();
+  }, []);
+
+  return (
     <ChakraProvider>
-    <Component {...pageProps} />
+      <Component {...pageProps} />
     </ChakraProvider>
-  )
+  );
 }

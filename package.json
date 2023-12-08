@@ -12,6 +12,9 @@
     "@chakra-ui/react": "^2.8.2",
     "anon-aadhaar-react": "^0.1.13",
     "crypto": "^1.0.1",
+    "@pushprotocol/restapi": "^1.4.45",
+    "@pushprotocol/socket": "^0.5.3",
+    "ethers": "5.7",
     "mongoose": "^8.0.3",
     "next": "14.0.4",
     "react": "^18",
@@ -19,7 +22,9 @@
     "react-icons": "^4.12.0"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
     "autoprefixer": "^10.0.1",
+    "hardhat": "^2.19.2",
     "postcss": "^8",
     "tailwindcss": "^3.3.0"
   }
