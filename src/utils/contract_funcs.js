@@ -1,6 +1,6 @@
 const { ethers, Contract } = require("ethers");
-const Factory_Abi = require("../../../abi/Complaint_Factory.abi.json");
-const Complaint = require("../../../abi/Complaint.abi.json");
+const Factory_Abi = require("../../abi/Complaint_Factory.abi.json");
+const Complaint = require("../../abi/Complaint.abi.json");
 const { useStorageUpload } = require("@thirdweb-dev/react");
 import { create_complaint } from "./user";
 const FACTORY_ADDR = "0x80441741eD06afa3c56B8427A3947F44A1b8A73d";
