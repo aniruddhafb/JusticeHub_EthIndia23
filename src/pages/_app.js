@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import crypto from "crypto";
 import { AnonAadhaarProvider } from "anon-aadhaar-react";
-import { check_user } from "./utils/user";
+import { check_user } from "../utils/user";
 
 // anon adhaar id
 const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
