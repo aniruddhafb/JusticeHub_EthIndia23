@@ -13,24 +13,19 @@ import { ChakraProvider } from "@chakra-ui/react";
 import crypto from "crypto";
 import { AnonAadhaarProvider } from "anon-aadhaar-react";
 
+// anon adhaar id 
 const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
 
 export default function App({ Component, pageProps }) {
-  const [provider, set_provider] = useState();
-  const [signer, set_signer] = useState();
-  const [signer_addr, set_signer_address] = useState();
+  const[walletAddress, setWalletAddress]= useState();
   
-
   const connect_wallet = async () => {
-    // const provider = new ethers.providers.Web3Provider(window.ethereum);
-    // await provider.send("eth_requestAccounts", []);
-    // // await provider.ready;
-    // set_provider(provider);
-    // const signer = await provider.getSigner();
-    // console.log(signer);
-    // set_signer(signer);
-    // const walletAddress = await signer.getAddress();
-    // set_signer_address(walletAddress);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.ready;
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const wallet_address = await signer.getAddress();
+    setWalletAddress(wallet_address);
   };
 
   useEffect(() => {
@@ -43,9 +38,7 @@ export default function App({ Component, pageProps }) {
         <Component
           {...pageProps}
           connect_wallet={connect_wallet}
-          provider={provider}
-          signer={signer}
-          signer_addr={signer_addr}
+          walletAddress={walletAddress}
         />
       </AnonAadhaarProvider>
     </ChakraProvider>

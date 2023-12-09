@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, IconButton, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, IconButton, Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react'
 import Head from 'next/head';
 import Image from 'next/image'
 import Link from 'next/link';
@@ -20,37 +20,40 @@ const hire_advocates = () => {
 
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
-            <div className="contentContainerHead">
+                <div className="contentContainerHead">
                     <Header />
                     <div className="contentTitle">
                         <h2>Consult Advocates</h2>
                     </div>
                 </div>
                 <div className="contentContainerBody contentContainerBodyFlex">
-                    <Card maxW='md'>
+                    
+                    <Card maxW='md' style={{margin:"14px"}}>
                         <CardHeader>
                             <Flex spacing='4'>
                                 <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                                    <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
+                                    <Avatar src='https://bit.ly/sage-adebayo' />
 
                                     <Box>
-                                        <Heading size='sm'>Segun Adebayo</Heading>
-                                        <Text>Creator, Chakra UI</Text>
+                                        <Heading size='sm'>Dr. Malik Sharma</Heading>
+                                        <Text>senior Advocate, Karnataka</Text>
                                     </Box>
                                 </Flex>
-                                <IconButton
-                                    variant='ghost'
-                                    colorScheme='gray'
-                                    aria-label='See menu'
-                                    icon={<BsThreeDotsVertical />}
-                                />
+                                <Menu>
+                                    <MenuButton
+                                        as={IconButton}
+                                        aria-label='Options'
+                                        icon={<BsThreeDotsVertical />}
+                                    />
+                                    <MenuList>
+                                        <MenuItem><a href='https://cache.careers360.mobi/media/presets/1016X880/articles/uploads/froala_editor/images/2022/4/8/1649401441388.png' target='_blank'>View Certification</a></MenuItem>
+                                    </MenuList>
+                                </Menu>
                             </Flex>
                         </CardHeader>
                         <CardBody>
                             <Text>
-                                With Chakra UI, I wanted to sync the speed of development with the speed
-                                of design. I wanted the developer to be just as excited as the designer to
-                                create a screen.
+                                Dr. Malik Sharma is a seasoned environmental lawyer known for his groundbreaking work in the field. Holding a Ph.D. in Environmental Law, he has been at the forefront of legal battles to protect our planet. Driven by a deep love for nature, he has successfully litigated against corporations violating environmental regulations and has played a crucial role in shaping policies for sustainable development.
                             </Text>
                         </CardBody>
                         <CardFooter
@@ -63,13 +66,10 @@ const hire_advocates = () => {
                             }}
                         >
                             <Button flex='1' variant='ghost'>
-                                Like
+                               Live Chat
                             </Button>
                             <Button flex='1' variant='ghost'>
-                                Comment
-                            </Button>
-                            <Button flex='1' variant='ghost'>
-                                Share
+                                Video Chat
                             </Button>
                         </CardFooter>
                     </Card>
