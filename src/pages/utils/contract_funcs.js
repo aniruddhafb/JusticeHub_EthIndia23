@@ -10,15 +10,7 @@ export const factory_contract = async (provider, signer) => {
     Factory_Abi,
     signer
   );
-  // await _factory_contract.post_fir(
-  //   "data.name",
-  //   "dmeo me",
-  //   33,
-  //   "data.ddress",
-  //   "data.email",
-  //   "data.complaint",
-  //   "data.evidence"
-  // );
+
   return _factory_contract;
 };
 
