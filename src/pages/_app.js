@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import crypto from "crypto";
 import { AnonAadhaarProvider } from "anon-aadhaar-react";
+import { check_user } from "./utils/user";
 
 // anon adhaar id
 const app_id = process.env.NEXT_PUBLIC_APP_ID || "";
@@ -48,6 +49,9 @@ export default function App({ Component, pageProps }) {
     console.log(new_signer);
     set_signer(new_signer);
     setWalletAddress(wallet_address);
+    if (!walletAddress) return;
+
+    check_user(walletAddress, "", "");
   };
 
   useEffect(() => {

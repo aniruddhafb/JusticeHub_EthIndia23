@@ -28,7 +28,7 @@ const file_complaint = ({ provider, signer }) => {
     const res = await storage?.upload(data.evidence);
     const new_data = { ...data, evidence: res };
     console.log(new_data);
-    upload_fir(provider, signer, new_data);
+    upload_fir(signer, new_data);
   };
   return (
     <div className="dashboardContainer">

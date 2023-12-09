@@ -11,7 +11,7 @@ contract Complaint is Ownable {
     address admins;
 
     string public name;
-    uint8 public contact_num;
+    uint256 public contact_num;
     string public _address;
 
     string public email;
@@ -39,7 +39,7 @@ contract Complaint is Ownable {
         uint256 _id,
         string memory _name,
         string memory _complaint_against,
-        uint8 _contact_num,
+        uint256 _contact_num,
         string memory address_,
         string memory _email,
         string memory _complaint,
@@ -76,5 +76,27 @@ contract Complaint is Ownable {
         } else {
             fir_status = status.pending;
         }
+    }
+
+    function getInfo() public view returns (
+        string memory name,
+        uint256 contact_num,
+        string memory _address,
+        string memory email,
+        string memory complaint,
+        string memory evidence,
+        string memory complaint_against,
+        uint256 date_of_complaint
+    ) {
+        return (
+            name,
+            contact_num,
+            _address,
+            email,
+            complaint,
+            evidence,
+            complaint_against,
+            date_of_complaint
+        );
     }
 }

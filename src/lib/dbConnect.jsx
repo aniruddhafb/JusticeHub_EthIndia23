@@ -17,10 +17,10 @@ async function dbConnect() {
   }
 
   if (!cached.promise) {
-    const opts = {
-    };
+    const opts = {};
     cached.promise = mongoose.connect(mongodb_uri, opts).then((mongoose) => {
       db = mongoose;
+      console.log("db Connected");
       return mongoose;
     });
   }

@@ -1,27 +1,26 @@
 import mongoose, { Schema } from "mongoose";
 
-const UserSchema = new mongoose.Schema({
-  wallet_id: {
-    type: String,
-    unique: true,
+const UserSchema = new mongoose.Schema(
+  {
+    wallet_id: {
+      type: String,
+      unique: true,
+    },
+    name: {
+      type: String,
+      sparse: true,
+    },
+    address: {
+      type: String,
+      sparse: true,
+    },
+    complaints: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Complaint",
+      },
+    ],
   },
-  user_name: {
-    type: String,
-    sparse: true,
-  },
-  role: {
-    type: String,
-    sparse:true,
-  },
-  address: {
-    type: String,
-    sparse: true,
-  },
-  state: {
-    type: String,
-    sparse: true,
-  }
-},
   { timestamps: true }
 );
 

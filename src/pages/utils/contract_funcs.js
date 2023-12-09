@@ -1,10 +1,11 @@
 const { ethers, Contract } = require("ethers");
 const Factory_Abi = require("../../../abi/Complaint_Factory.abi.json");
+const Complaint = require("../../../abi/Complaint.abi.json");
 const { useStorageUpload } = require("@thirdweb-dev/react");
 
-const FACTORY_ADDR = "0xC5476BaC179C76ca46aCa05C6E42c7b6baF71C27";
+const FACTORY_ADDR = "0x80441741eD06afa3c56B8427A3947F44A1b8A73d";
 
-export const factory_contract = async (provider, signer) => {
+export const factory_contract = async (signer) => {
   const _factory_contract = new ethers.Contract(
     FACTORY_ADDR,
     Factory_Abi,
@@ -14,18 +15,43 @@ export const factory_contract = async (provider, signer) => {
   return _factory_contract;
 };
 
-export const upload_fir = async (provider, signer, data) => {
+export const upload_fir = async (signer, data) => {
   try {
     const factory_contract = new ethers.Contract(
       FACTORY_ADDR,
       Factory_Abi,
       signer
     );
+
+    factory_contract.on(
+      "complaint_new",
+      (
+        id,
+        _name,
+        _contact_num,
+        address_,
+        _email,
+        _complaint,
+        _evidence,
+        new_complaint
+      ) => {
+        console.log({
+          id: id.toString(),
+          _name,
+          _contact_num,
+          address_,
+          _email,
+          _complaint,
+          _evidence,
+          new_complaint,
+        });
+        
+      }
+    );
+
     const res = await factory_contract.id();
-    console.log(res);
-    const addrss = await factory_contract.test();
-    console.log(addrss);
-    await factory_contract.post_fir(
+    console.log(parseInt(res));
+    const tx = await factory_contract.post_fir(
       data.name,
       "demo me",
       data.contact_num,
@@ -34,13 +60,19 @@ export const upload_fir = async (provider, signer, data) => {
       data.complaint,
       data.evidence
     );
+
+    await tx.wait();
+
     const new_id = await factory_contract.id();
     console.log({ new_id: new_id.toString() });
-
-    factory_contract.on("complaint_new", (event) => {
-      console.log("Event received:", event);
-    });
   } catch (error) {
     console.log(error.message);
   }
+};
+
+export const view_complaint = async (provider, complaint_addr) => {
+  const contract = new ethers.Contract(complaint_addr, Complaint, provider);
+
+  const res = contract.getInfo();
+  console.log(res);
 };
