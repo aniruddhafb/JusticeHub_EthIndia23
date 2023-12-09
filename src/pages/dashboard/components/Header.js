@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, IconButton, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import { Avatar, Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, FormLabel, IconButton, Input, InputGroup, InputLeftAddon, Menu, MenuButton, MenuItem, MenuList, Stack, Text, useDisclosure } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { FaPlus } from "react-icons/fa";
 import { IoIosLogOut, IoIosNotifications } from "react-icons/io";
 import { LogInWithAnonAadhaar, useAnonAadhaar } from "anon-aadhaar-react";
@@ -7,8 +7,48 @@ import { useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import { IoIosNotificationsOutline } from "react-icons/io";
 
+import { PushAPI, CONSTANTS } from "@pushprotocol/restapi";
+import { ethers } from "ethers";
+import Image from 'next/image';
 
-const Header = () => {
+
+const Header = ({ signer }) => {
+
+    const pushChannelAdress = "0xd0F431Fc2aC657cc8a64963aC108bea8cFB209B2";
+    const [notifications, set_notifications] = useState([]);
+    const [aliceBabu, setAliceBabu] = useState("");
+
+    const pushFetch = async (signer) => {
+        try {
+            if (!aliceBabu) {
+                const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
+                setAliceBabu(userAlice);
+                const inboxNotifications = await userAlice.notification.list("INBOX");
+                set_notifications(inboxNotifications)
+            }
+            else{
+                const inboxNotifications = await aliceBabu.notification.list("INBOX");
+                set_notifications(inboxNotifications)
+            }
+        } catch (error) {
+            console.log("fetching error")
+        }
+    }
+
+    const subcribeChannel = async () => {
+        try {
+            const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
+            await userAlice.notification.subscribe(
+                `eip155:11155111:${pushChannelAdress}`,
+            );
+
+            const inboxNotifications = await userAlice.notification.list("INBOX");
+            set_notifications(inboxNotifications)
+        } catch (error) {
+            console.log("subscribe error")
+        }
+    }
+
     const { isOpen, onOpen, onClose } = useDisclosure()
     const firstField = React.useRef()
 
@@ -19,14 +59,15 @@ const Header = () => {
         console.log("Anon Aadhaar status: ", anonAadhaar.status);
         (anonAadhaar?.status == "logged-out" && router.push("/"))
     }, [anonAadhaar]);
+
     return (
         <>
             <div className="hamIcon" id="hamIcon">
                 <i className="fas fa-bars"></i>
             </div>
-            <div className="logout" style={{display:"flex", flexDirection:"row"}}>
+            <div className="logout" style={{ display: "flex", flexDirection: "row" }}>
                 <>
-                    <IoIosNotifications onClick={onOpen} style={{ cursor:"pointer", fontSize: "33px", color:"white", marginRight:"10px", marginTop:"3px" }} />
+                    <IoIosNotifications onClick={() => (pushFetch(signer), onOpen())} style={{ cursor: "pointer", fontSize: "33px", color: "white", marginRight: "10px", marginTop: "3px" }} />
                     <Drawer
                         isOpen={isOpen}
                         placement='right'
@@ -41,10 +82,24 @@ const Header = () => {
                             </DrawerHeader>
 
                             <DrawerBody>
+                                {notifications?.map((noti) =>
+                                    <div style={{ marginBottom: "5px", borderBottom: "0.2px solid gray" }}>
+                                        <div style={{ display: "flex" }}>
+                                            <Image src={noti?.icon} height={100} width={100} style={{ height: "50px", width: "50px" }} />
+                                            <div>
+                                                <Text style={{ fontWeight: "bold" }}>{noti.notification.title}</Text>
+                                            </div>
+                                        </div>
+                                        <Text>{noti.notification.body}</Text>
+                                    </div>
+                                )}
+                                {notifications.length <= 0 &&
+                                <Text>No notifications yet!</Text>
+                                }
                             </DrawerBody>
 
                             <DrawerFooter borderTopWidth='1px'>
-                                <Button colorScheme='blue'>Opt-in for Notifications</Button>
+                                <Button onClick={subcribeChannel} colorScheme='blue'>Opt-in for Notifications</Button>
                             </DrawerFooter>
                         </DrawerContent>
                     </Drawer>
@@ -58,7 +113,7 @@ const Header = () => {
                                 <Avatar style={{ height: "35px", width: "35px" }} src='https://bit.ly/broken-link' />
                             </Stack>
                         }
-                        style={{background:"none"}}
+                        style={{ background: "none" }}
                     />
                     <MenuList>
                         {anonAadhaar.status == "logged-in" &&

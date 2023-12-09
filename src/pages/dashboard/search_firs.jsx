@@ -7,7 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-const search_firs = () => {
+const search_firs = ({signer}) => {
     return (
         <div className="dashboardContainer">
             <Head>
@@ -21,7 +21,7 @@ const search_firs = () => {
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
                 <div className="contentContainerHead">
-                    <Header />
+                    <Header signer={signer} />
                     <div className="contentTitle">
                         <h2>Find FIR's</h2>
                     </div>

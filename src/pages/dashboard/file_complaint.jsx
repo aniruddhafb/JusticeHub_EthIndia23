@@ -47,7 +47,7 @@ const file_complaint = ({ provider, signer }) => {
       {/* main area  */}
       <div className="contentContainer" id="contentContainer">
         <div className="contentContainerHead">
-          <Header />
+          <Header signer={signer}/>
           <div className="contentTitle">
             <h2>File Complaint</h2>
           </div>

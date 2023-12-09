@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
+    "@pushprotocol/restapi": "^1.4.45",
+    "@pushprotocol/socket": "^0.5.3",
+    "@pushprotocol/uiweb": "^1.1.22",
     "@thirdweb-dev/react": "^4.1.14",
+    "@thirdweb-dev/storage": "^2.0.7",
     "anon-aadhaar-react": "^0.1.13",
-    "axios": "^1.6.2",
     "crypto": "^1.0.1",
     "ethers": "^5.7.2",
     "mongodb": "^6.3.0",
