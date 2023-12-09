@@ -70,6 +70,7 @@ const file_complaint = ({ provider, signer }) => {
             <Text mb="-8px">Your Contact No. *</Text>
             <Input
               name="contact_num"
+              type="number"
               onChange={handle_change}
               placeholder="Your Contact"
             />
