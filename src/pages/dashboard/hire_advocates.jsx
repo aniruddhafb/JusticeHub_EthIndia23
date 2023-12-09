@@ -66,10 +66,7 @@ const hire_advocates = () => {
                             }}
                         >
                             <Button flex='1' variant='ghost'>
-                               Live Chat
-                            </Button>
-                            <Button flex='1' variant='ghost'>
-                                Video Chat
+                                <Link href="/dashboard/advocates/234">Visit Profile</Link>
                             </Button>
                         </CardFooter>
                     </Card>

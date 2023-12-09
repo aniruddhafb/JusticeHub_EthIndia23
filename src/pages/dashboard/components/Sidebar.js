@@ -23,9 +23,6 @@ const Sidebar = () => {
                 <div className="dashboardComponents">
                     <Link href="/dashboard/hire_advocates"><i className="fas fa-users"></i> Find Advocates</Link>
                 </div>
-                <div className="dashboardComponents">
-                    <Link href="/dashboard/view_challans"><i className="far fa-file"></i> Your Challans</Link>
-                </div>
             </div>
         </div>
     )
