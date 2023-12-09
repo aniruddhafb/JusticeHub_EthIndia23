@@ -80,11 +80,11 @@ const about = () => {
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    {/* <img src="images/f1.png" alt=""/> */}
+                                    <img src="base.jpeg" alt="" style={{borderRadius:"50%"}}/>
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Polygon
+                                        Celo Blockchain
                                     </h5>
                                 </div>
                             </div>
@@ -92,11 +92,50 @@ const about = () => {
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    {/* <img src="images/f2.png" alt=""> */}
+                                    <img src="celo.jpeg" alt="" style={{borderRadius:"50%"}} />
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Base
+                                        Base Blockchain
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="furniture_section layout_padding">
+                <div className="container">
+                    <div className="heading_container">
+                        <h2>
+                            Integrated Technologies
+                        </h2>
+                        <p>
+                            We have integrated the following sponsor tech on our application
+                        </p>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-6 col-lg-4">
+                            <div className="box">
+                                <div className="img-box">
+                                    <img src="anon.png" alt="" style={{borderRadius:"50%"}}/>
+                                </div>
+                                <div className="detail-box">
+                                    <h5>
+                                        Anon Adhaar
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-lg-4">
+                            <div className="box">
+                                <div className="img-box">
+                                    <img src="push.jpeg" alt="" style={{borderRadius:"50%"}} />
+                                </div>
+                                <div className="detail-box">
+                                    <h5>
+                                        Push Protocol
                                     </h5>
                                 </div>
                             </div>

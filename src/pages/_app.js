@@ -4,7 +4,7 @@ import "@/styles/bootstrap-un.css";
 import "@/styles/font-awesome.min.css";
 import "@/styles/dashboard.css";
 import "@/styles/responsive.css";
-import { ThirdwebProvider } from "@thirdweb-dev/storage";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 // other imports
 import { ethers } from "ethers";
