@@ -55,8 +55,8 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                    JusticHub is a platform where users can file complaints, view their complains and challans with evidences, can consult advocates, and many more at one place.
-                                    Building the impossible  💪
+                                    Justicehub is a platform where users can file public and personal complaints, incentivize the system for priority, view  other complains with evidences stored on blockchain, can consult advocates, and many more at one place.
+                                    Building the impossible 💪
                                 </p>
                             </div>
                         </div>
@@ -65,8 +65,8 @@ const about = () => {
             </section>
 
             <section className="furniture_section layout_padding">
-                <div className="container" style={{justifyContent:"center", textAlign:"center"}}>
-                    <div className="heading_container">
+                <div className="container">
+                    <div className="heading_container"style={{display:"flex", alignItems:"center"}}>
                         <h2>
                             Supported Chains
                         </h2>
@@ -74,7 +74,7 @@ const about = () => {
                             We are deployed on the following chains
                         </p>
                     </div>
-                    <div className="row">
+                    <div className="row"  style={{justifyContent:"center", textAlign:"center"}}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
@@ -82,7 +82,7 @@ const about = () => {
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Celo Blockchain
+                                        Base Blockchain
                                     </h5>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@ const about = () => {
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Base Blockchain
+                                        Celo Blockchain
                                     </h5>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@ const about = () => {
 
             <section className="furniture_section layout_padding">
                 <div className="container">
-                    <div className="heading_container">
+                    <div className="heading_container"  style={{display:"flex", alignItems:"center"}}>
                         <h2>
                             Integrated Technologies
                         </h2>
@@ -113,7 +113,7 @@ const about = () => {
                             We have integrated the following sponsor tech on our application
                         </p>
                     </div>
-                    <div className="row">
+                    <div className="row" style={{justifyContent:"center", textAlign:"center"}}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">

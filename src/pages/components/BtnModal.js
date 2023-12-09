@@ -34,14 +34,23 @@ const BtnModal = () => {
                 <ModalOverlay />
                 {login == false ?
                     <ModalContent>
-                        <ModalHeader>Get Started On JusticeHub</ModalHeader>
+                        <ModalHeader>
+                            {anonAadhaar?.status == "logging-in" ?
+                           "Please wait it might take upto 30 seconds"
+                           :
+                            "Get Started On JusticeHub"
+                        }
+                        </ModalHeader>
+                        {anonAadhaar?.status != "logging-in" &&
                         <ModalCloseButton />
+                    }
                         <ModalBody pb={2}>
                             <FormControl>
-                                <FormLabel>Full name</FormLabel>
-                                <Input ref={initialRef} placeholder='Full name' />
+                                <FormLabel>Full Name (optional)</FormLabel>
+                                <Input ref={initialRef} placeholder='Your Good Name' />
                             </FormControl>
-                            <Text pt={6}>Note - When you continue to login make sure to <a href='https://anon-aadhaar-documentation.vercel.app/assets/files/signed-34028a7a5557dbba054b805b6ee6ba79.pdf' target='_blank' style={{color:"blue"}}>download</a> dummy masked adhaar card and use password test123 for successful download and login :)</Text>
+                            <Text pt={6}>Note - When you continue to login make sure to <a href='https://anon-aadhaar-documentation.vercel.app/assets/files/signed-34028a7a5557dbba054b805b6ee6ba79.pdf' target='_blank' style={{ color: "blue" }}>download</a> dummy masked adhaar card and use password test123 for successful download and login.</Text>
+                            <Text>PS the adhaar verification can take upto 30 seconds, patience is appretiated :)</Text>
                         </ModalBody>
 
                         <ModalFooter>
@@ -58,9 +67,9 @@ const BtnModal = () => {
                         <ModalCloseButton />
                         <ModalFooter>
                             <Link href="/dashboard">
-                            <Button colorScheme='blue' mr={3}>
-                            Continue
-                        </Button>
+                                <Button colorScheme='blue' mr={3}>
+                                    Continue
+                                </Button>
                             </Link>
                         </ModalFooter>
                     </ModalContent>

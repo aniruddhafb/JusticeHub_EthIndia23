@@ -55,7 +55,7 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                    File a complaint on justicehub and get peoples support on public complaints, also file your personal complaints easily 💪
+                                    File a complaint on justicehub and get peoples support on public complaints, also file your personal complaints easily, view other complaints with full details and evidences secured on blockchain, incentivize the system to get your complaints prioritized 💪
                                 </p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                Raised complaints are filed as FIR's if accepted by the respected police authorities,  view other peoples fir records and their status aswell
+                                Raised complaints are filed as FIR's if acknowledged by the respected police authorities, view other fir records and their status as well
                                 </p>
                             </div>
                         </div>
@@ -101,7 +101,7 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                    Consult advocates for your cases, incentivize advocates to figure out your case, etc.
+                                    Consult advocates for your cases via video calls, incentivize advocates to figure out your case, etc.
                                 </p>
                             </div>
                         </div>

@@ -13,7 +13,7 @@ export default function Home() {
       <header className="header_section long_section px-0">
         <nav className="navbar navbar-expand-lg custom_nav-container ">
           <Link className="navbar-brand" href="/">
-          <img src='/logosm.png' style={{height:"70%", width:"70%"}} />
+            <img src='/logosm.png' style={{ height: "70%", width: "70%" }} />
           </Link>
           <button className="navbar-toggler" type="button">
             <span className=""> </span>
@@ -52,7 +52,7 @@ export default function Home() {
                   <div className="col-md-5">
                     <div className="detail-box">
                       <h1>
-                      Navigate Justice Effortlessly with JusticeHub !!
+                        Navigate Justice Effortlessly with JusticeHub !!
                       </h1>
                       <p>
                         File complaints, view fir public records, view challans, consult advocates and many more things in one place 😎
@@ -69,10 +69,183 @@ export default function Home() {
                   </div>
                   <div className="col-md-7">
                     <div className="img-box">
-                      <img src="/law.jpg" alt="" style={{height:"560px"}} />
+                      <img src="/law.jpg" alt="" style={{ height: "560px" }} />
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about_section layout_padding long_section" style={{marginTop:"25px"}}>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="img-box">
+                <img src="/about-img.png" />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="detail-box">
+                <div className="heading_container">
+                  <h2>
+                    About Us
+                  </h2>
+                </div>
+                <p>
+                  Justicehub is a platform where users can file public and personal complaints, incentivize the system for priority, view  other complains with evidences stored on blockchain, can consult advocates, and many more at one place.
+                  Building the impossible 💪
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="furniture_section layout_padding">
+        <div className="container">
+          <div className="heading_container" style={{ display: "flex", alignItems: "center" }}>
+            <h2>
+              Supported Chains
+            </h2>
+            <p>
+              We are deployed on the following chains
+            </p>
+          </div>
+          <div className="row" style={{ justifyContent: "center", textAlign: "center" }}>
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="img-box">
+                  <img src="base.jpeg" alt="" style={{ borderRadius: "50%" }} />
+                </div>
+                <div className="detail-box">
+                  <h5>
+                    Base Blockchain
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="img-box">
+                  <img src="celo.jpeg" alt="" style={{ borderRadius: "50%" }} />
+                </div>
+                <div className="detail-box">
+                  <h5>
+                    Celo Blockchain
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="furniture_section layout_padding">
+        <div className="container">
+          <div className="heading_container" style={{ display: "flex", alignItems: "center" }}>
+            <h2>
+              Integrated Technologies
+            </h2>
+            <p>
+              We have integrated the following technologies on our platform
+            </p>
+          </div>
+          <div className="row" style={{ justifyContent: "center", textAlign: "center" }}>
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="img-box">
+                  <img src="anon.png" alt="" style={{ borderRadius: "50%" }} />
+                </div>
+                <div className="detail-box">
+                  <h5>
+                    Anon Adhaar
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-6 col-lg-4">
+              <div className="box">
+                <div className="img-box">
+                  <img src="push.jpeg" alt="" style={{ borderRadius: "50%" }} />
+                </div>
+                <div className="detail-box">
+                  <h5>
+                    Push Protocol
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about_section layout_padding long_section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="img-box">
+                <img src="/jud.png" style={{ height: "250px", width: "70%" }} />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="detail-box">
+                <div className="heading_container">
+                  <h2>
+                    File a complaint
+                  </h2>
+                </div>
+                <p>
+                  File a complaint on justicehub and get peoples support on public complaints, also file your personal complaints easily, view other complaints with full details and evidences secured on blockchain, incentivize the system to get your complaints prioritized 💪
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="about_section layout_padding long_section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="detail-box">
+                <div className="heading_container">
+                  <h2>
+                    View FIR's
+                  </h2>
+                </div>
+                <p>
+                  Raised complaints are filed as FIR's if acknowledged by the respected police authorities, view other fir records and their status as well
+                </p>
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="img-box">
+                <img src="/about-img.png" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="about_section layout_padding long_section">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <div className="img-box">
+                <img src="/adv.png" />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="detail-box">
+                <div className="heading_container">
+                  <h2>
+                    Consult Advocates
+                  </h2>
+                </div>
+                <p>
+                  Consult advocates for your cases via video calls, incentivize advocates to figure out your case, etc.
+                </p>
               </div>
             </div>
           </div>
@@ -83,7 +256,7 @@ export default function Home() {
       <footer className="footer_section">
         <div className="container">
           <p>
-            &copy; <span id="displayYear"></span> 2023 JusticeHub - Built during <a href="https://ethindia2023.devfolio.co/" target='_blank'>Ethindia 2023 Hackathon</a>
+            &copy; <span id="displayYear"></span> 2023 JusticeHub - Built during <a href="https://ethindia2023.devfolio.co/" target='_blank' style={{ color: "gray" }}>Ethindia 2023 Hackathon</a>
           </p>
         </div>
       </footer>
