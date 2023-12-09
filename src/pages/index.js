@@ -2,12 +2,20 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import BtnModal from './components/BtnModal'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <div className="hero_area">
+      <Head>
+        <title>JusticeHub - Navigate Justice Effortlessly </title>
+        <meta
+          name="description"
+          content="JusticeHub - Navigate Justice Effortlessly "
+        />
+      </Head>
 
       {/* navbar  */}
       <header className="header_section long_section px-0">
@@ -79,7 +87,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about_section layout_padding long_section" style={{marginTop:"25px"}}>
+      <section className="about_section layout_padding long_section" style={{ marginTop: "25px" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-6">

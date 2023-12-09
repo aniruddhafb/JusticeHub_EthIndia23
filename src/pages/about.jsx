@@ -2,10 +2,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import BtnModal from './components/BtnModal'
+import Head from 'next/head'
 
 const about = () => {
     return (
         <>
+        <Head>
+        <title>About - Navigate Justice Effortlessly </title>
+        <meta
+          name="description"
+          content="JusticeHub - Navigate Justice Effortlessly "
+        />
+      </Head>
             {/* navbar  */}
             <header className="header_section long_section px-0">
                 <nav className="navbar navbar-expand-lg custom_nav-container ">
