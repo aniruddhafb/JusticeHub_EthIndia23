@@ -6,7 +6,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import { Input, Select, Stack, Text, Textarea } from "@chakra-ui/react";
-import { upload_fir } from "../utils/contract_funcs";
+import { upload_fir } from "../../utils/contract_funcs";
 import { useStorage } from "@thirdweb-dev/react";
 
 const file_complaint = ({ provider, signer, walletAddress }) => {

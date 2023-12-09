@@ -2,44 +2,50 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import BtnModal from './components/BtnModal'
+import Head from 'next/head'
 
 const about = () => {
     return (
         <>
+        <Head>
+        <title>About - Navigate Justice Effortlessly </title>
+        <meta
+          name="description"
+          content="JusticeHub - Navigate Justice Effortlessly "
+        />
+      </Head>
             {/* navbar  */}
             <header className="header_section long_section px-0">
-        <nav className="navbar navbar-expand-lg custom_nav-container ">
-          <Link className="navbar-brand" href="/">
-            <span>
-              JusticeHub
-            </span>
-          </Link>
-          <button className="navbar-toggler" type="button">
-            <span className=""> </span>
-          </button>
+                <nav className="navbar navbar-expand-lg custom_nav-container ">
+                    <Link className="navbar-brand" href="/">
+                    <img src='/logosm.png' style={{height:"70%", width:"70%"}} />
+                    </Link>
+                    <button className="navbar-toggler" type="button">
+                        <span className=""> </span>
+                    </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul className="navbar-nav  ">
-                <li className="nav-item active">
-                  <Link className="nav-link" href="/">Home</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/about">About</Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" href="/features">Features</Link>
-                </li>
-              </ul>
-            </div>
-            <div className="quote_btn-container">
-              <BtnModal />
-            </div>
-            <div>
-            </div>
-          </div>
-        </nav>
-      </header>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className="d-flex mx-auto flex-column flex-lg-row align-items-center">
+                            <ul className="navbar-nav  ">
+                                <li className="nav-item active">
+                                    <Link className="nav-link" href="/">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" href="/about">About</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" href="/features">Features</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="quote_btn-container">
+                            <BtnModal />
+                        </div>
+                        <div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
 
             <section className="about_section layout_padding long_section">
                 <div className="container">
@@ -57,8 +63,8 @@ const about = () => {
                                     </h2>
                                 </div>
                                 <p>
-                                    JusticHub is a platform where indian citizens can file complaints, view their complains and challans with evidences, can consult advocates, and many more.
-                                    Building the impossible  💪
+                                    Justicehub is a platform where users can file public and personal complaints, incentivize the system for priority, view  other complains with evidences stored on blockchain, can consult advocates, and many more at one place.
+                                    Building the impossible 💪
                                 </p>
                             </div>
                         </div>
@@ -68,7 +74,7 @@ const about = () => {
 
             <section className="furniture_section layout_padding">
                 <div className="container">
-                    <div className="heading_container">
+                    <div className="heading_container"style={{display:"flex", alignItems:"center"}}>
                         <h2>
                             Supported Chains
                         </h2>
@@ -76,15 +82,15 @@ const about = () => {
                             We are deployed on the following chains
                         </p>
                     </div>
-                    <div className="row">
+                    <div className="row"  style={{justifyContent:"center", textAlign:"center"}}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="base.jpeg" alt="" style={{borderRadius:"50%"}}/>
+                                    <img src="base.jpeg" alt="" style={{ borderRadius: "50%" }} />
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Celo Blockchain
+                                        Base Blockchain
                                     </h5>
                                 </div>
                             </div>
@@ -92,11 +98,11 @@ const about = () => {
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="celo.jpeg" alt="" style={{borderRadius:"50%"}} />
+                                    <img src="celo.jpeg" alt="" style={{ borderRadius: "50%" }} />
                                 </div>
                                 <div className="detail-box">
                                     <h5>
-                                        Base Blockchain
+                                        Celo Blockchain
                                     </h5>
                                 </div>
                             </div>
@@ -107,7 +113,7 @@ const about = () => {
 
             <section className="furniture_section layout_padding">
                 <div className="container">
-                    <div className="heading_container">
+                    <div className="heading_container"  style={{display:"flex", alignItems:"center"}}>
                         <h2>
                             Integrated Technologies
                         </h2>
@@ -115,11 +121,11 @@ const about = () => {
                             We have integrated the following sponsor tech on our application
                         </p>
                     </div>
-                    <div className="row">
+                    <div className="row" style={{justifyContent:"center", textAlign:"center"}}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="anon.png" alt="" style={{borderRadius:"50%"}}/>
+                                    <img src="anon.png" alt="" style={{ borderRadius: "50%" }} />
                                 </div>
                                 <div className="detail-box">
                                     <h5>
@@ -131,7 +137,7 @@ const about = () => {
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
-                                    <img src="push.jpeg" alt="" style={{borderRadius:"50%"}} />
+                                    <img src="push.jpeg" alt="" style={{ borderRadius: "50%" }} />
                                 </div>
                                 <div className="detail-box">
                                     <h5>
