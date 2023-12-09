@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -5,7 +6,7 @@ const Sidebar = () => {
     return (
         <div className="fixedNavigation" id="fixedNavigation">
             <div className="fixedNavigationHead">
-                <Link href="/"><h2>JusticeHub</h2></Link>
+                <Link href="/" style={{display:"flex", justifyContent:"center"}}><img src='/logosm.png' style={{height:"80%", width:"80%"}} /></Link>
             </div>
             <div className="fixedNavigationBody">
                 <div className="dashboardComponents">

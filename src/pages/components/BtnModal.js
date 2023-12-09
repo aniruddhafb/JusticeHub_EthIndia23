@@ -41,14 +41,6 @@ const BtnModal = () => {
                                 <FormLabel>Full name</FormLabel>
                                 <Input ref={initialRef} placeholder='Full name' />
                             </FormControl>
-                            <FormControl pt={4}>
-                                <FormLabel>State (optional)</FormLabel>
-                                <Input ref={initialRef} placeholder='Maharashtra' />
-                            </FormControl>
-                            <FormControl pt={4}>
-                                <FormLabel>Address (optional)</FormLabel>
-                                <Input ref={initialRef} placeholder='Stree 5, lamhinton road' />
-                            </FormControl>
                             <Text pt={6}>Note - When you continue to login make sure to <a href='https://anon-aadhaar-documentation.vercel.app/assets/files/signed-34028a7a5557dbba054b805b6ee6ba79.pdf' target='_blank' style={{color:"blue"}}>download</a> dummy masked adhaar card and use password test123 for successful download and login :)</Text>
                         </ModalBody>
 

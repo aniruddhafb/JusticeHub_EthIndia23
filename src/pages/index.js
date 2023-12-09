@@ -13,9 +13,7 @@ export default function Home() {
       <header className="header_section long_section px-0">
         <nav className="navbar navbar-expand-lg custom_nav-container ">
           <Link className="navbar-brand" href="/">
-            <span>
-              JusticeHub
-            </span>
+          <img src='/logosm.png' style={{height:"70%", width:"70%"}} />
           </Link>
           <button className="navbar-toggler" type="button">
             <span className=""> </span>
