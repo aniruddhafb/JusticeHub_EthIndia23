@@ -5,7 +5,7 @@ const Sidebar = () => {
     return (
         <div className="fixedNavigation" id="fixedNavigation">
             <div className="fixedNavigationHead">
-                <h2>JusticeHub</h2>
+                <Link href="/"><h2>JusticeHub</h2></Link>
             </div>
             <div className="fixedNavigationBody">
                 <div className="dashboardComponents">

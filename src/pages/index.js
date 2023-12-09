@@ -63,15 +63,15 @@ export default function Home() {
                         <Link href="/about" className="btn1">
                           About
                         </Link>
-                        <Link href="/dashboard" className="btn2">
-                          Get Started
+                        <Link href="/features" className="btn2">
+                          Features
                         </Link>
                       </div>
                     </div>
                   </div>
                   <div className="col-md-7">
                     <div className="img-box">
-                      <img src="/police.png" alt="" style={{height:"560px"}} />
+                      <img src="/law.jpg" alt="" style={{height:"560px"}} />
                     </div>
                   </div>
                 </div>
