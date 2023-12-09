@@ -4,6 +4,7 @@ import "@/styles/bootstrap-un.css";
 import "@/styles/font-awesome.min.css";
 import "@/styles/dashboard.css";
 import "@/styles/responsive.css";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 // other imports
 import { ethers } from "ethers";
@@ -52,16 +53,22 @@ export default function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <ChakraProvider>
-      <AnonAadhaarProvider _appId={app_id}>
-        <Component
-          {...pageProps}
-          connect_wallet={connect_wallet}
-          walletAddress={walletAddress}
-          signer={signer}
-          provider={provider}
-        />
-      </AnonAadhaarProvider>
-    </ChakraProvider>
+    <ThirdwebProvider
+      clientId={"5d679304f3253a0a2505896ef083e834"} // You can get a client id from dashboard settings
+      // clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENTID} // You can get a client id from dashboard settings
+      activeChain="mumbai"
+    >
+      <ChakraProvider>
+        <AnonAadhaarProvider _appId={app_id}>
+          <Component
+            {...pageProps}
+            connect_wallet={connect_wallet}
+            walletAddress={walletAddress}
+            signer={signer}
+            provider={provider}
+          />
+        </AnonAadhaarProvider>
+      </ChakraProvider>
+    </ThirdwebProvider>
   );
 }

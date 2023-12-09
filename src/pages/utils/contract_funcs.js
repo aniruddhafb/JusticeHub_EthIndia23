@@ -14,9 +14,7 @@ export const factory_contract = async (provider, signer) => {
 };
 
 export const upload_fir = async (provider, signer, data) => {
-  const apiKey = "c542a701.b3505aeb5f784c3d9ff68e4d3044da87";
-  const uploadResponse = await lighthouse.upload(data.evidence, apiKey);
-
+  
   console.log(uploadResponse);
   // try {
 
