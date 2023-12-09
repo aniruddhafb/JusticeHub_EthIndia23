@@ -19,8 +19,8 @@ import React, { useEffect, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import { get_user_complaints } from "../utils/user";
-import { view_complaint } from "../utils/contract_funcs";
+import { get_user_complaints } from "../../utils/user";
+import { view_complaint } from "../../utils/contract_funcs";
 
 const view_complaints = ({ walletAddress, signer, provider }) => {
   const [complaints, set_complaints] = useState([]);
