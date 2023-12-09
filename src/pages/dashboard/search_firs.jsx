@@ -21,7 +21,7 @@ const search_firs = () => {
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
                 <div className="contentContainerHead">
-                    <Header />
+                    <Header signer={signer} />
                     <div className="contentTitle">
                         <h2>Find FIR's</h2>
                     </div>

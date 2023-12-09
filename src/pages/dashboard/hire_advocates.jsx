@@ -7,7 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-const hire_advocates = () => {
+const hire_advocates = ({signer}) => {
     return (
         <div className="dashboardContainer">
             <Head>
@@ -21,7 +21,7 @@ const hire_advocates = () => {
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
                 <div className="contentContainerHead">
-                    <Header />
+                    <Header signer={signer}/>
                     <div className="contentTitle">
                         <h2>Consult Advocates</h2>
                     </div>

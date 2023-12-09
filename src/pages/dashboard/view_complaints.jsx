@@ -21,7 +21,7 @@ const view_complaints = () => {
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
             <div className="contentContainerHead">
-                    <Header />
+                    <Header signer={signer}/>
                     <div className="contentTitle">
                         <h2>Your Complaints</h2>
                     </div>

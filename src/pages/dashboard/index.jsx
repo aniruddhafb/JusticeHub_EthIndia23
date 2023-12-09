@@ -4,7 +4,7 @@ import React from 'react'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 
-const index = () => {
+const index = ({signer}) => {
     return (
         <div className="dashboardContainer">
             <Head>
@@ -18,7 +18,7 @@ const index = () => {
             {/* main area  */}
             <div className="contentContainer" id="contentContainer">
             <div className="contentContainerHead">
-                    <Header />
+                    <Header signer={signer} />
                     <div className="contentTitle">
                         <h2>Dashboard</h2>
                     </div>

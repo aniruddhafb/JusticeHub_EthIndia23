@@ -21,21 +21,7 @@ export default function App({ Component, pageProps }) {
   const [signer, set_signer] = useState();
   const [provider, set_provider] = useState();
 
-  // const connect_wallet = async () => {
-  //   let signer = null;
-
-  //   let provider;
-  //   if (window.ethereum == null) {
-  //     console.log("MetaMask not installed; using read-only defaults");
-  //     provider = ethers.getDefaultProvider();
-  //   } else {
-  //     provider = new ethers.BrowserProvider(window.ethereum);
-  //     set_provider(provider);
-  //     signer = await provider.getSigner();
-  //     set_signer(signer);
-  //     console.log(signer);
-  //   }
-  // };
+  const pushChannelAdress = "0xd0F431Fc2aC657cc8a64963aC108bea8cFB209B2";
 
   const connect_wallet = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -45,7 +31,6 @@ export default function App({ Component, pageProps }) {
     const signer = provider.getSigner();
     const wallet_address = await signer.getAddress();
     const new_signer = provider.getSigner(wallet_address);
-    console.log(new_signer);
     set_signer(new_signer);
     setWalletAddress(wallet_address);
   };
@@ -56,7 +41,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <ThirdwebProvider
-      clientId="5d679304f3253a0a2505896ef083e834" // You can get a client id from dashboard settings
+      clientId="5d679304f3253a0a2505896ef083e834"
       activeChain="mumbai"
     >
       <ChakraProvider>
