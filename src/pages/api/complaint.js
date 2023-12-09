@@ -7,23 +7,42 @@ export default async function handler(req, res) {
   const { method } = req;
 
   switch (method) {
+    case "GET":
+      try {
+        const { user_addr } = req.query;
+
+        const user = await User.findOne({ wallet_id: user_addr });
+        if (!user)
+          return res
+            .status(404)
+            .json({ success: false, message: "cannot find this user" });
+
+        const complaints = user.break;
+      } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+      }
+      break;
     case "POST":
       try {
         const { user_id, complaint } = req.body;
 
-        const user = await User.findById(user_id);
+        const user = await User.findOne({ wallet_id: user_id });
+        console.log(user);
 
-        // if (!user)
-        //   return res
-        //     .status(404)
-        //     .json({ success: false, message: "Cannot Find User" });
+        if (!user)
+          return res
+            .status(404)
+            .json({ success: false, message: "Cannot Find User" });
 
-        // const new_complaint = await Complaint.create({
-        //   owner: "user",
-        //   complaint,
-        // });
+        const new_complaint = await Complaint.create({
+          owner: user,
+          complaint,
+        });
 
-        res.status(200).json({ success: true, message: complaint });
+        await user.complaints.push(new_complaint);
+        await user.save();
+
+        res.status(200).json({ success: true, message: new_complaint });
         break;
       } catch (error) {
         res.status(500).json({ success: false, message: error.message });

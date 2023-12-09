@@ -18,15 +18,14 @@ export const check_user = async (wallet_id) => {
   }
 };
 
-export const create_complaint = async (user_addr, complain_addr) => {
+export const create_complaint = async (signer_addr, complain_addr) => {
   try {
     const res = await axios({
-      url: "/api/user",
+      url: "/api/complaint",
       method: "POST",
       data: {
-        wallet_id,
-        name: "",
-        address: "",
+        user_id: signer_addr,
+        complaint: complain_addr,
       },
     });
     console.log(res);

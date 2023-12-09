@@ -9,7 +9,7 @@ import { Input, Select, Stack, Text, Textarea } from "@chakra-ui/react";
 import { upload_fir } from "../utils/contract_funcs";
 import { useStorage } from "@thirdweb-dev/react";
 
-const file_complaint = ({ provider, signer }) => {
+const file_complaint = ({ provider, signer, walletAddress }) => {
   const [data, set_data] = useState({
     name: "",
     contact_num: "",
@@ -28,7 +28,7 @@ const file_complaint = ({ provider, signer }) => {
     const res = await storage?.upload(data.evidence);
     const new_data = { ...data, evidence: res };
     console.log(new_data);
-    upload_fir(signer, new_data);
+    upload_fir(signer, new_data, walletAddress);
   };
   return (
     <div className="dashboardContainer">
@@ -47,7 +47,7 @@ const file_complaint = ({ provider, signer }) => {
       {/* main area  */}
       <div className="contentContainer" id="contentContainer">
         <div className="contentContainerHead">
-          <Header signer={signer}/>
+          <Header signer={signer} />
           <div className="contentTitle">
             <h2>File Complaint</h2>
           </div>
