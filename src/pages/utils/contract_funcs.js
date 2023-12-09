@@ -22,11 +22,9 @@ export const upload_fir = async (provider, signer, data) => {
       signer
     );
     const res = await factory_contract.id();
-    console.log(res.toString());
-    factory_contract.on("complaint_new", (event) => {
-      console.log("Event received:", event);
-    });
-    console.log({ res: res.toString() });
+    console.log(res);
+    const addrss = await factory_contract.test();
+    console.log(addrss);
     await factory_contract.post_fir(
       data.name,
       "demo me",
@@ -34,10 +32,14 @@ export const upload_fir = async (provider, signer, data) => {
       data.address,
       data.email,
       data.complaint,
-      "data.evidence"
+      data.evidence
     );
     const new_id = await factory_contract.id();
     console.log({ new_id: new_id.toString() });
+
+    factory_contract.on("complaint_new", (event) => {
+      console.log("Event received:", event);
+    });
   } catch (error) {
     console.log(error.message);
   }

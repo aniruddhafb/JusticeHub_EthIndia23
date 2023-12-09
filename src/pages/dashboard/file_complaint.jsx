@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import { Input, Select, Stack, Text, Textarea } from "@chakra-ui/react";
 import { upload_fir } from "../utils/contract_funcs";
+import { useStorage } from "@thirdweb-dev/react";
 
 const file_complaint = ({ provider, signer }) => {
   const [data, set_data] = useState({
@@ -22,8 +23,12 @@ const file_complaint = ({ provider, signer }) => {
     set_data({ ...data, [e.target.name]: e.target.value });
   };
 
+  const storage = useStorage();
   const handle_submit = async () => {
-    upload_fir(provider, signer, data);
+    const res = await storage?.upload(data.evidence);
+    const new_data = { ...data, evidence: res };
+    console.log(new_data);
+    upload_fir(provider, signer, new_data);
   };
   return (
     <div className="dashboardContainer">
