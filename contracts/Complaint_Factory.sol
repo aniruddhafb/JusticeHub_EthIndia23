@@ -13,8 +13,10 @@ contract Complaint_Factory is Ownable {
 
     Complaint complaint_;
 
-    address[] public gov_ids;
+    address[] public test;
 
+    address[] public gov_ids;
+    
     event complaint_new(
         uint256 id,
         string _name,
@@ -30,6 +32,7 @@ contract Complaint_Factory is Ownable {
 
     function post_fir(
         string memory _name,
+        string memory _complaint_against,
         uint8 _contact_num,
         string memory address_,
         string memory _email,
@@ -39,6 +42,7 @@ contract Complaint_Factory is Ownable {
         Complaint new_fir = new Complaint(
             id.current(),
             _name,
+            _complaint_against,
             _contact_num,
             address_,
             _email,
@@ -50,6 +54,8 @@ contract Complaint_Factory is Ownable {
 
         id.increment();
         pending_fir.increment();
+
+        test.push(address(new_fir));
         
         emit complaint_new(
             id.current(),

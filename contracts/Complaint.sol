@@ -17,6 +17,7 @@ contract Complaint is Ownable {
     string public email;
     string public complaint;
     string public evidence;
+    string public complaint_against;
     uint256 public date_of_complaint;
 
     address[] assigned_individuals;
@@ -37,6 +38,7 @@ contract Complaint is Ownable {
     constructor(
         uint256 _id,
         string memory _name,
+        string memory _complaint_against,
         uint8 _contact_num,
         string memory address_,
         string memory _email,
@@ -48,6 +50,7 @@ contract Complaint is Ownable {
         require(msg.sender == address(_factory_contract), "Wrong person posting FIR");
         id = _id;
         name = _name;
+        complaint_against = _complaint_against;
         contact_num = _contact_num;
         _address = address_;
         email = _email;
