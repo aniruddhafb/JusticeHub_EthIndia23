@@ -1,5 +1,4 @@
 const { ethers, Contract } = require("ethers");
-const lighthouse = require("@lighthouse-web3/sdk");
 const Factory_Abi = require("../../../abi/Complaint_Factory.abi.json");
 
 const FACTORY_ADDR = "0xC5476BaC179C76ca46aCa05C6E42c7b6baF71C27";
