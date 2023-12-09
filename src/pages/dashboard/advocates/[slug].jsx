@@ -1,9 +1,8 @@
 import React from 'react'
 
 const advocatePage = () => {
-  return (
-    <div>advocatePage</div>
-  )
+    return (
+                <h2>22</h2>
+                )
 }
-
 export default advocatePage
