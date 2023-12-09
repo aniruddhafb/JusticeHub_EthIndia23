@@ -16,13 +16,20 @@ const Header = ({ signer }) => {
 
     const pushChannelAdress = "0xd0F431Fc2aC657cc8a64963aC108bea8cFB209B2";
     const [notifications, set_notifications] = useState([]);
+    const [aliceBabu, setAliceBabu] = useState("");
 
     const pushFetch = async (signer) => {
         try {
-            const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
-            const inboxNotifications = await userAlice.notification.list("INBOX");
-            set_notifications(inboxNotifications)
-            console.log({ inboxNotifications })
+            if (!aliceBabu) {
+                const userAlice = await PushAPI.initialize(signer, { env: CONSTANTS.ENV.STAGING });
+                setAliceBabu(userAlice);
+                const inboxNotifications = await userAlice.notification.list("INBOX");
+                set_notifications(inboxNotifications)
+            }
+            else{
+                const inboxNotifications = await aliceBabu.notification.list("INBOX");
+                set_notifications(inboxNotifications)
+            }
         } catch (error) {
             console.log("fetching error")
         }
@@ -34,6 +41,9 @@ const Header = ({ signer }) => {
             await userAlice.notification.subscribe(
                 `eip155:11155111:${pushChannelAdress}`,
             );
+
+            const inboxNotifications = await userAlice.notification.list("INBOX");
+            set_notifications(inboxNotifications)
         } catch (error) {
             console.log("subscribe error")
         }
@@ -73,16 +83,19 @@ const Header = ({ signer }) => {
 
                             <DrawerBody>
                                 {notifications?.map((noti) =>
-                                <div style={{marginBottom:"5px", borderBottom:"0.2px solid gray"}}>
-                                    <div style={{display:"flex"}}>
-                                        <Image src={noti?.icon} height={100} width={100} style={{height:"50px", width:"50px"}} />
-                                        <div>
-                                        <Text style={{fontWeight:"bold"}}>{noti.notification.title}</Text>
+                                    <div style={{ marginBottom: "5px", borderBottom: "0.2px solid gray" }}>
+                                        <div style={{ display: "flex" }}>
+                                            <Image src={noti?.icon} height={100} width={100} style={{ height: "50px", width: "50px" }} />
+                                            <div>
+                                                <Text style={{ fontWeight: "bold" }}>{noti.notification.title}</Text>
+                                            </div>
                                         </div>
-                                    </div>
                                         <Text>{noti.notification.body}</Text>
-                                </div>
+                                    </div>
                                 )}
+                                {notifications.length <= 0 &&
+                                <Text>No notifications yet!</Text>
+                                }
                             </DrawerBody>
 
                             <DrawerFooter borderTopWidth='1px'>

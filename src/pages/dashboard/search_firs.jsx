@@ -7,7 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-const search_firs = () => {
+const search_firs = ({signer}) => {
     return (
         <div className="dashboardContainer">
             <Head>

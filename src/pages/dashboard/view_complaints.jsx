@@ -7,7 +7,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
 
-const view_complaints = () => {
+const view_complaints = ({signer}) => {
     return (
         <div className="dashboardContainer">
             <Head>
