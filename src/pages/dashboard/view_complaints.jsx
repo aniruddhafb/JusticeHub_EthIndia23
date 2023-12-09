@@ -1,66 +1,96 @@
-import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Flex, Heading, IconButton, Stack, Text } from '@chakra-ui/react'
-import Head from 'next/head';
-import Image from 'next/image'
-import Link from 'next/link';
-import React from 'react'
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Flex,
+  Heading,
+  IconButton,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import { get_user_complaints } from "../utils/user";
+import { view_complaint } from "../utils/contract_funcs";
 
-const view_complaints = ({signer}) => {
-    return (
-        <div className="dashboardContainer">
-            <Head>
-                <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-                    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-            </Head>
+const view_complaints = ({ walletAddress, signer, provider }) => {
+  const [complaints, set_complaints] = useState([]);
 
-            {/* side bar  */}
-            <Sidebar />
+  const fetch_complaints = async () => {
+    const res = await get_user_complaints(walletAddress);
+    const _complaints = [];
+    if (!res) return;
+    await Promise.all(
+      res.message.map(async (e) => {
+        const res = await view_complaint(signer, e.complaint);
+        _complaints.push(res);
+      })
+    );
+    console.log(_complaints);
+    set_complaints(complaints);
+  };
 
-            {/* main area  */}
-            <div className="contentContainer" id="contentContainer">
-            <div className="contentContainerHead">
-                    <Header signer={signer}/>
-                    <div className="contentTitle">
-                        <h2>Your Complaints</h2>
-                    </div>
-                </div>
-                <div className="contentContainerBody contentContainerBodyFlex">
-                    <Card
-                        direction={{ base: 'column', sm: 'row' }}
-                        overflow='hidden'
-                        variant='outline'
-                    >
-                        {/* <Image
-                            objectFit='cover'
-                            maxW={{ base: '100%', sm: '200px' }}
-                            width={100}
-                            src='https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-                            alt='Caffe Latte'
-                        /> */}
+  useEffect(() => {
+    fetch_complaints();
+  }, []);
 
-                        <Stack>
-                            <CardBody>
-                                <Heading size='md'>The perfect latte</Heading>
+  return (
+    <div className="dashboardContainer">
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+          crossorigin="anonymous"
+        />
+      </Head>
 
-                                <Text py='2'>
-                                    Caffè latte is a coffee beverage of Italian origin made with espresso
-                                    and steamed milk.
-                                </Text>
-                            </CardBody>
+      {/* side bar  */}
+      <Sidebar />
 
-                            <CardFooter>
-                                <Button variant='solid' colorScheme='blue'>
-                                    Buy Latte
-                                </Button>
-                            </CardFooter>
-                        </Stack>
-                    </Card>
-                </div>
-            </div>
+      {/* main area  */}
+      <div className="contentContainer" id="contentContainer">
+        <div className="contentContainerHead">
+          <Header signer={signer} />
+          <div className="contentTitle">
+            <h2>Your Complaints</h2>
+          </div>
         </div>
-    )
-}
+        <div className="contentContainerBody contentContainerBodyFlex">
+          {complaints?.map((e) => (
+            <Card
+              direction={{ base: "column", sm: "row" }}
+              overflow="hidden"
+              variant="outline"
+            >
+              <Stack>
+                <CardBody>
+                  <Heading size="md">{e?.name}</Heading>
 
-export default view_complaints
+                  <Text py="2">{e?.complaint}</Text>
+                </CardBody>
+
+                <CardFooter>
+                  <Button variant="solid" colorScheme="blue">
+                    Buy Latte
+                  </Button>
+                </CardFooter>
+              </Stack>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default view_complaints;

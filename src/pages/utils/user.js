@@ -34,3 +34,16 @@ export const create_complaint = async (signer_addr, complain_addr) => {
     console.log(error.message);
   }
 };
+
+export const get_user_complaints = async (signer_addr) => {
+  try {
+    const res = await axios({
+      url: `/api/complaint?user_addr=${signer_addr}`,
+      method: "GET",
+    });
+
+    return res.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

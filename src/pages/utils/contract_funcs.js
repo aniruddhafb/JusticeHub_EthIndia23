@@ -1,9 +1,9 @@
 const { ethers, Contract } = require("ethers");
 const Factory_Abi = require("../../../abi/Complaint_Factory.abi.json");
-const Complaint = require("../../../abi/Complaint.abi.json");
+const ComplaintABI = require("../../../abi/Complaint.abi.json");
 const { useStorageUpload } = require("@thirdweb-dev/react");
 import { create_complaint } from "./user";
-const FACTORY_ADDR = "0x80441741eD06afa3c56B8427A3947F44A1b8A73d";
+const FACTORY_ADDR = "0x281ACd214c8267DE753e9DEDF4583c211dBeC1BE";
 
 export const factory_contract = async (signer) => {
   const _factory_contract = new ethers.Contract(
@@ -63,7 +63,7 @@ export const upload_fir = async (signer, data, signer_address) => {
     );
 
     await tx.wait();
-    
+
     const new_id = await factory_contract.id();
     console.log({ new_id: new_id.toString() });
   } catch (error) {
@@ -71,9 +71,20 @@ export const upload_fir = async (signer, data, signer_address) => {
   }
 };
 
-export const view_complaint = async (provider, complaint_addr) => {
-  const contract = new ethers.Contract(complaint_addr, Complaint, provider);
+export const view_complaint = async (signer, complaint_addr) => {
+  const contract = new ethers.Contract(complaint_addr, ComplaintABI, signer);
 
-  const res = contract.getInfo();
-  console.log(res);
+  const name = await contract.name();
+  const contact_num = await contract.contact_num();
+  const address = await contract._address();
+  const email = await contract.email();
+  const complaint = await contract.complaint();
+  const data = {
+    name,
+    contact_num: contact_num.toString(),
+    address,
+    email,
+    complaint,
+  };
+  return data;
 };

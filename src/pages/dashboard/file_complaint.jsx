@@ -24,12 +24,13 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
   };
 
   const storage = useStorage();
+
   const handle_submit = async () => {
     const res = await storage?.upload(data.evidence);
     const new_data = { ...data, evidence: res };
-    console.log(new_data);
     upload_fir(signer, new_data, walletAddress);
   };
+
   return (
     <div className="dashboardContainer">
       <Head>
