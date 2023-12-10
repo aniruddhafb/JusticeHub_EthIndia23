@@ -65,7 +65,7 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
             <h2>Your Complaints</h2>
           </div>
         </div>
-        <div className="contentContainerBody contentContainerBodyFlex">
+        <div className="contentContainerBody contentContainerBodyFlex ">
           {complaints?.map((e) => {
             console.log({ complaints });
             return (

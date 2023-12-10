@@ -18,6 +18,7 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
     contact_num: "12345",
     address: "street 2",
     email: "anon@gmail.com",
+    complaint_against: "",
     complaint: "",
     evidence: "",
   });
@@ -77,7 +78,8 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                   }}
                 >
                   <Text mb="8px">
-                    Fill the form to complete your complaint filing proccess of personal complaint
+                    Fill the form to complete your complaint filing proccess of
+                    personal complaint
                   </Text>
 
                   <Text mb="-8px">Your Name *</Text>
@@ -102,8 +104,8 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
 
                   <Text mb="-8px">Complaint Against *</Text>
                   <Input
-                    name=""
-                    // onChange={handle_change}
+                    name="complaint_against"
+                    onChange={handle_change}
                     placeholder="Name of Person you want to raise complaint"
                   />
 
@@ -142,7 +144,8 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                   }}
                 >
                   <Text mb="-6px">
-                    Fill the form to complete your complaint filing proccess for a public complaint
+                    Fill the form to complete your complaint filing proccess for
+                    a public complaint
                   </Text>
                   <Text mb="8px">
                     (your data is anon when you are filing a public complaint)
