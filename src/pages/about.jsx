@@ -7,18 +7,18 @@ import Head from 'next/head'
 const about = () => {
     return (
         <>
-        <Head>
-        <title>About - Navigate Justice Effortlessly </title>
-        <meta
-          name="description"
-          content="JusticeHub - Navigate Justice Effortlessly "
-        />
-      </Head>
+            <Head>
+                <title>About - Navigate Justice Effortlessly </title>
+                <meta
+                    name="description"
+                    content="JusticeHub - Navigate Justice Effortlessly "
+                />
+            </Head>
             {/* navbar  */}
             <header className="header_section long_section px-0">
                 <nav className="navbar navbar-expand-lg custom_nav-container ">
                     <Link className="navbar-brand" href="/">
-                    <img src='/logosm.png' style={{height:"70%", width:"70%"}} />
+                        <img src='/logosm.png' style={{ height: "70%", width: "70%" }} />
                     </Link>
                     <button className="navbar-toggler" type="button">
                         <span className=""> </span>
@@ -74,7 +74,7 @@ const about = () => {
 
             <section className="furniture_section layout_padding">
                 <div className="container">
-                    <div className="heading_container"style={{display:"flex", alignItems:"center"}}>
+                    <div className="heading_container" style={{ display: "flex", alignItems: "center" }}>
                         <h2>
                             Supported Chains
                         </h2>
@@ -82,7 +82,7 @@ const about = () => {
                             We are deployed on the following chains
                         </p>
                     </div>
-                    <div className="row"  style={{justifyContent:"center", textAlign:"center"}}>
+                    <div className="row" style={{ justifyContent: "center", textAlign: "center" }}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
@@ -113,7 +113,7 @@ const about = () => {
 
             <section className="furniture_section layout_padding">
                 <div className="container">
-                    <div className="heading_container"  style={{display:"flex", alignItems:"center"}}>
+                    <div className="heading_container" style={{ display: "flex", alignItems: "center" }}>
                         <h2>
                             Integrated Technologies
                         </h2>
@@ -121,7 +121,7 @@ const about = () => {
                             We have integrated the following sponsor tech on our application
                         </p>
                     </div>
-                    <div className="row" style={{justifyContent:"center", textAlign:"center"}}>
+                    <div className="row" style={{ justifyContent: "center", textAlign: "center" }}>
                         <div className="col-md-6 col-lg-4">
                             <div className="box">
                                 <div className="img-box">
@@ -131,6 +131,7 @@ const about = () => {
                                     <h5>
                                         Anon Adhaar
                                     </h5>
+                                    <p>We are using anon-adhaar SDK for verifying the citizenship of our users, only verified users can login and enter the dashboard</p>
                                 </div>
                             </div>
                         </div>
@@ -143,6 +144,7 @@ const about = () => {
                                     <h5>
                                         Push Protocol
                                     </h5>
+                                    <p>We are using push protocol for sending important notifications, we have also integrated push chat to have conversation with advocates</p>
                                 </div>
                             </div>
                         </div>
