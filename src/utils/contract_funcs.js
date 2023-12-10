@@ -19,7 +19,7 @@ export const factory_contract = async (signer) => {
 };
 
 export const upload_fir = async (signer, data, signer_address) => {
-  try {
+  // try {
     const factory_contract = new ethers.Contract(
       BASE_FACTORY_ADDR,
       Factory_Abi,
@@ -124,9 +124,9 @@ export const CELO_upload_fir = async (signer, data, signer_address) => {
 
     const new_id = await factory_contract.id();
     console.log({ new_id: new_id.toString() });
-  } catch (error) {
-    console.log(error.message);
-  }
+  // } catch (error) {
+    // console.log(error.message);
+  // }
 };
 
 export const view_complaint = async (signer, complaint_addr) => {
