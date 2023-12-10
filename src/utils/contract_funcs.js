@@ -79,12 +79,18 @@ export const view_complaint = async (signer, complaint_addr) => {
   const address = await contract._address();
   const email = await contract.email();
   const complaint = await contract.complaint();
+  const evidence = await contract.evidence();
+  const complaint_against = await contract.complaint_against();
+  const date_of_complaint = await contract.date_of_complaint();
   const data = {
     name,
     contact_num: contact_num.toString(),
     address,
     email,
     complaint,
+    evidence,
+    complaint_against,
+    date_of_complaint,
   };
   return data;
 };
