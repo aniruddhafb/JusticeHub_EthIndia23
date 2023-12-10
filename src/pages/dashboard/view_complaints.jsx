@@ -133,7 +133,7 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
                   direction={{ base: "column", sm: "row" }}
                   overflow="hidden"
                   variant="outline"
-                  className="m-6"
+                  style={{margin:"10px"}}
                 >
                   <Stack>
                     <CardBody>
@@ -160,7 +160,9 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
                           <DrawerHeader>{complaint_infor?.name}</DrawerHeader>
                           <DrawerBody>
                             <p>{complaint_infor?.complaint}</p>
-                          </DrawerBody>
+                            <Text>
+                              Evidences - 
+                            </Text>
                           <Image
                             alt="nftPreview"
                             width={100}
@@ -170,6 +172,13 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
                               "https://ipfs.io/ipfs/"
                             )}
                           ></Image>
+                          <Button style={{margin:"8px"}}>
+                            Cancel
+                          </Button>
+                          <Button style={{margin:"8px"}}>
+                            Acknowledge
+                          </Button>
+                          </DrawerBody>
                         </DrawerContent>
                       </Drawer>
                     </CardFooter>

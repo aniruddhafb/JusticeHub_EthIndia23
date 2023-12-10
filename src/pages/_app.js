@@ -31,6 +31,53 @@ export default function App({ Component, pageProps }) {
     set_provider(provider);
     const signer = provider.getSigner();
     const wallet_address = await signer.getAddress();
+
+    const chainSwitchReload = async () => {
+      try {
+        router.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    const switchBaseCHain = async () => {
+      try {
+        await window.ethereum.request({
+          method: "wallet_switchEthereumChain",
+          params: [{ chainId: "0x14A33" }],
+        });
+        chainSwitchReload("84531");
+      } catch (error) {
+        if (error.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainId: "0x14A33",
+                  chainName: "Base Goerli",
+                  nativeCurrency: {
+                    name: "Goerli",
+                    symbol: "ETH",
+                    decimals: 18,
+                  },
+                  blockExplorerUrls: ["https://goerli.basescan.org"],
+                  rpcUrls: ["	https://goerli.base.org"],
+                },
+              ],
+            });
+            chainSwitchReload("80001");
+          } catch (addError) {
+            console.error(addError);
+          }
+        }
+      }
+    };
+    
+    const {chain_id} = await provider.getNetwork();
+    if(chain_id != 84531){
+      switchBaseCHain();
+    }
     const new_signer = provider.getSigner(wallet_address);
     set_signer(new_signer);
     setWalletAddress(wallet_address);
