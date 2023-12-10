@@ -82,7 +82,7 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
         <div className="contentContainerHead">
           <Header signer={signer} />
           <div className="contentTitle">
-            <h2>Your Complaints</h2>
+            <h2>View Complaints</h2>
           </div>
         </div>
         <div className="contentContainerBody contentContainerBodyFlex" style={{ flexDirection: "column" }}>

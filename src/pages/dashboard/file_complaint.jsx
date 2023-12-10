@@ -126,7 +126,7 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                     }
                   />
                   {loading ?
-                    <Button >Submitting <Spinner /></Button>
+                    <Button >Submitting {" "}<Spinner /></Button>
                     :
                     <Button onClick={handle_submit}>Submit</Button>
                   }
