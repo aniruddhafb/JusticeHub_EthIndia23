@@ -54,7 +54,7 @@ export const upload_fir = async (signer, data, signer_address) => {
     console.log(parseInt(res));
     const tx = await factory_contract.post_fir(
       data.name,
-      "demo me",
+      data.complaint_against,
       data.contact_num,
       data.address,
       data.email,

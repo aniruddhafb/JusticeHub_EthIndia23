@@ -171,6 +171,7 @@ export default function Home() {
                   <h5>
                     Anon Adhaar
                   </h5>
+                  <p>We are using anon-adhaar SDK for verifying the citizenship of our users, only verified users can login and enter the dashboard</p>
                 </div>
               </div>
             </div>
@@ -183,6 +184,7 @@ export default function Home() {
                   <h5>
                     Push Protocol
                   </h5>
+                  <p>We are using push protocol for sending important notifications, we have also integrated push chat to have conversation with advocates</p>
                 </div>
               </div>
             </div>

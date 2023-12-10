@@ -5,17 +5,29 @@ import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import { Input, Select, Stack, Text, Textarea } from "@chakra-ui/react";
+import {
+  Button,
+  Input,
+  Select,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+  Textarea,
+} from "@chakra-ui/react";
 import { upload_fir } from "../../utils/contract_funcs";
 import { useStorage } from "@thirdweb-dev/react";
 
 const file_complaint = ({ provider, signer, walletAddress }) => {
   const [data, set_data] = useState({
     name: "",
-    contact_num: "",
+    contact_num: "12345",
+    address: "street 2",
+    email: "anon@gmail.com",
     complaint_against: "",
-    address: "",
-    email: "",
     complaint: "",
     evidence: "",
   });
@@ -56,71 +68,127 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
           </div>
         </div>
         <div className="contentContainerBody contentContainerBodyFlex">
-          <Stack
-            spacing={[3, 3]}
-            direction={["column"]}
-            style={{
-              background: "white",
-              padding: "40px",
-              borderRadius: "6px",
-            }}
-          >
-            <Text mb="8px">
-              Fill the form to complete your complaint filing proccess
-            </Text>
+          <Tabs>
+            <TabList>
+              <Tab>File Personal Complaint</Tab>
+              <Tab>File Public Complaint</Tab>
+            </TabList>
 
-            <Text mb="-8px">your full name *</Text>
-            <Input
-              name="name"
-              onChange={handle_change}
-              placeholder="Your Name"
-            />
-            <Text mb="-8px">Your Contact No. *</Text>
-            <Input
-              name="contact_num"
-              type="number"
-              onChange={handle_change}
-              placeholder="Your Contact"
-            />
-            <Text mb="-8px">Your Address *</Text>
-            <Input
-              name="address"
-              onChange={handle_change}
-              placeholder="Your Address"
-            />
-            <Text mb="-8px">Your Email *</Text>
-            <Input
-              name="email"
-              type="email"
-              onChange={handle_change}
-              placeholder="Your Address"
-            />
-            <Text mb="-8px">Complaint Against</Text>
-            <Input
-              name="complaint_against"
-              type="text"
-              onChange={handle_change}
-              placeholder="Name of that person"
-            />
+            <TabPanels>
+              <TabPanel>
+                <Stack
+                  spacing={[3, 3]}
+                  direction={["column"]}
+                  style={{
+                    background: "white",
+                    padding: "40px",
+                    borderRadius: "6px",
+                  }}
+                >
+                  <Text mb="8px">
+                    Fill the form to complete your complaint filing proccess of
+                    personal complaint
+                  </Text>
 
-            <Text mb="-8px">your complaint in detail *</Text>
-            <Textarea
-              name="complaint"
-              // value={value}
-              onChange={handle_change}
-              placeholder="Describe your complaint"
-              size="sm"
-            />
+                  <Text mb="-8px">Your Name *</Text>
+                  <Input
+                    name="name"
+                    onChange={handle_change}
+                    placeholder="Your Good Name"
+                  />
+                  <Text mb="-8px">Your Contact No. *</Text>
+                  <Input
+                    name="contact_num"
+                    type="number"
+                    onChange={handle_change}
+                    placeholder="Your Contact"
+                  />
+                  <Text mb="-8px">Your Address *</Text>
+                  <Input
+                    name="address"
+                    onChange={handle_change}
+                    placeholder="Your Address"
+                  />
 
-            <Text mb="-8px">upload your evidences (optional)</Text>
-            <Input
-              type="file"
-              onChange={(e) =>
-                set_data({ ...data, evidence: e.target.files[0] })
-              }
-            />
-            <button onClick={handle_submit}>Submit</button>
-          </Stack>
+                  <Text mb="-8px">Complaint Against *</Text>
+                  <Input
+                    name="complaint_against"
+                    onChange={handle_change}
+                    placeholder="Name of Person you want to raise complaint"
+                  />
+
+                  <Text mb="-8px">your complaint in detail *</Text>
+                  <Textarea
+                    name="complaint"
+                    // value={value}
+                    onChange={handle_change}
+                    placeholder="Describe your complaint"
+                    size="sm"
+                  />
+
+                  <Text mb="-8px">upload your evidences (optional)</Text>
+                  <Input
+                    type="file"
+                    onChange={(e) =>
+                      set_data({ ...data, evidence: e.target.files[0] })
+                    }
+                  />
+                  <Button onClick={handle_submit}>Submit</Button>
+                </Stack>
+              </TabPanel>
+
+              <TabPanel>
+                <Stack
+                  spacing={[3, 3]}
+                  direction={["column"]}
+                  style={{
+                    background: "white",
+                    padding: "40px",
+                    borderRadius: "6px",
+                  }}
+                >
+                  <Text mb="-6px">
+                    Fill the form to complete your complaint filing proccess for
+                    a public complaint
+                  </Text>
+                  <Text mb="8px">
+                    (your data is anon when you are filing a public complaint)
+                  </Text>
+                  <Text mb="-8px">Your Address *</Text>
+                  <Input
+                    name="address"
+                    onChange={handle_change}
+                    placeholder="Your Address"
+                  />
+
+                  <Text mb="-8px">Complaint Against *</Text>
+                  <Input
+                    name=""
+                    // onChange={handle_change}
+                    placeholder="Name of Person you want to raise complaint"
+                  />
+
+                  <Text mb="-8px">your complaint in detail *</Text>
+                  <Textarea
+                    name="complaint"
+                    // value={value}
+                    onChange={handle_change}
+                    placeholder="Describe your complaint"
+                    size="sm"
+                  />
+
+                  <Text mb="-8px">upload your evidences (optional)</Text>
+                  <Input
+                    type="file"
+                    onChange={(e) =>
+                      set_data({ ...data, evidence: e.target.files[0] })
+                    }
+                  />
+                  <Button onClick={handle_submit}>Submit</Button>
+                </Stack>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
         </div>
       </div>
     </div>
