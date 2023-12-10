@@ -86,14 +86,14 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                     onChange={handle_change}
                     placeholder="Your Good Name"
                   />
-                  <Text mb="-8px">Your Contact No. *</Text>
+                  <Text mb="-8px">Your Contact No. (optional)</Text>
                   <Input
                     name="contact_num"
                     type="number"
                     onChange={handle_change}
                     placeholder="Your Contact"
                   />
-                  <Text mb="-8px">Your Address *</Text>
+                  <Text mb="-8px">Your Address (optional)</Text>
                   <Input
                     name="address"
                     onChange={handle_change}
@@ -177,7 +177,7 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                       set_data({ ...data, evidence: e.target.files[0] })
                     }
                   />
-                  <Button onClick={handle_submit}>Submit</Button>
+                  <Button onClick={()=> alert("coming soon..")}>Submit</Button>
                 </Stack>
               </TabPanel>
             </TabPanels>
