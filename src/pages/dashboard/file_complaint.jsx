@@ -5,23 +5,14 @@ import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import {
-  Button,
-  Input,
-  Select,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-  Textarea,
-} from "@chakra-ui/react";
+import { Button, CircularProgress, Input, Select, Spinner, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text, Textarea } from "@chakra-ui/react";
 import { upload_fir } from "../../utils/contract_funcs";
 import { useStorage } from "@thirdweb-dev/react";
 
 const file_complaint = ({ provider, signer, walletAddress }) => {
+
+  const [loading, set_loading] = useState(false);
+
   const [data, set_data] = useState({
     name: "",
     contact_num: "12345",
@@ -39,10 +30,11 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
   const storage = useStorage();
 
   const handle_submit = async () => {
-    console.log(data);
+    set_loading(true);
     const res = await storage?.upload(data.evidence);
     const new_data = { ...data, evidence: res };
-    upload_fir(signer, new_data, walletAddress);
+    const fir_file = await upload_fir(signer, new_data, walletAddress);
+    set_loading(false);
   };
 
   return (
@@ -133,7 +125,11 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
                       set_data({ ...data, evidence: e.target.files[0] })
                     }
                   />
-                  <Button onClick={handle_submit}>Submit</Button>
+                  {loading ?
+                    <Button >Submitting <Spinner /></Button>
+                    :
+                    <Button onClick={handle_submit}>Submit</Button>
+                  }
                 </Stack>
               </TabPanel>
 
