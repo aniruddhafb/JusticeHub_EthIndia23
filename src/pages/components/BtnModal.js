@@ -36,7 +36,7 @@ const BtnModal = () => {
                     <ModalContent>
                         <ModalHeader>
                             {anonAadhaar?.status == "logging-in" ?
-                           "Please wait it might take upto 30 seconds"
+                           "Please wait it might take upto 30 second"
                            :
                             "Get Started On JusticeHub"
                         }
