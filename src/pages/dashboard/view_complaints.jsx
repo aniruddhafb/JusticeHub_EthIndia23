@@ -6,11 +6,20 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   Heading,
   IconButton,
+  Input,
+  Spinner,
   Stack,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Image from "next/image";
@@ -24,8 +33,18 @@ import { view_complaint } from "../../utils/contract_funcs";
 
 const view_complaints = ({ walletAddress, signer, provider }) => {
   const [complaints, set_complaints] = useState([]);
+  const [loading, set_loading] = useState(false);
+
+  const handleClick = (newSize) => {
+    setSize(newSize)
+    onOpen()
+  }
+
+  const [size, setSize] = React.useState('')
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const fetch_complaints = async () => {
+    set_loading(true);
     const res = await get_user_complaints(walletAddress);
     const _complaints = [];
     if (!res) return;
@@ -37,6 +56,7 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
       })
     );
     set_complaints(_complaints);
+    set_loading(false);
   };
 
   useEffect(() => {
@@ -65,33 +85,68 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
             <h2>Your Complaints</h2>
           </div>
         </div>
-        <div className="contentContainerBody contentContainerBodyFlex ">
-          {complaints?.map((e) => {
-            console.log({ complaints });
-            return (
-              <Card
-                direction={{ base: "column", sm: "row" }}
-                overflow="hidden"
-                variant="outline"
-              >
-                <Stack>
-                  <CardBody>
-                    <Heading size="md">{e?.name}</Heading>
+        <div className="contentContainerBody contentContainerBodyFlex" style={{ flexDirection: "column" }}>
+          <Stack spacing={[3, 3]} direction={['column']} style={{ background: "white", padding: "40px", borderRadius: "6px", marginBottom: "30px" }}>
+            <Text mb='8px'>Search for fir's with registered fir number or person name</Text>
+            <Input placeholder='search for fir' />
+          </Stack>
 
-                    <Text py="2">{e?.complaint}</Text>
-                  </CardBody>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginTop: "15px" }}>
+            {complaints?.map((e) => {
+              return (
+                <Card
+                  direction={{ base: "column", sm: "row" }}
+                  overflow="hidden"
+                  variant="outline"
+                  className="m-6"
+                >
+                  <Stack>
+                    <CardBody>
+                      <Heading size="md">{e?.name}</Heading>
 
-                  <CardFooter>
-                    <Link href={"/"}>
-                      <Button variant="solid" colorScheme="blue">
-                        View
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Stack>
-              </Card>
-            );
-          })}
+                      <Text py="2">{e?.complaint}</Text>
+                    </CardBody>
+
+                    <CardFooter>
+                        <Button variant="solid" colorScheme="blue"
+                          onClick={() => handleClick(size)}
+                          key={size}
+                          m={4}
+                        >
+                          View
+                        </Button>
+
+                      <Drawer onClose={onClose} isOpen={isOpen} size={size}>
+                        <DrawerOverlay />
+                        <DrawerContent>
+                          <DrawerCloseButton />
+                          <DrawerHeader>{` drawer contents`}</DrawerHeader>
+                          <DrawerBody>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                              Consequat nisl vel pretium lectus quam id. Semper quis lectus
+                              nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
+                              quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
+                              magna eget est lorem. Erat imperdiet sed euismod nisi porta.
+                              Lectus vestibulum mattis ullamcorper velit.
+                            </p>
+                          </DrawerBody>
+                        </DrawerContent>
+                      </Drawer>
+
+                    </CardFooter>
+                  </Stack>
+                </Card>
+              );
+            })}
+            {(complaints?.length <= 0 && !loading) &&
+              <Text>No complaints found!!</Text>
+            }
+            {loading &&
+              <Spinner />
+            }
+          </div>
         </div>
       </div>
     </div>
