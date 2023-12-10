@@ -86,7 +86,8 @@ contract Complaint is Ownable {
         string memory complaint,
         string memory evidence,
         string memory complaint_against,
-        uint256 date_of_complaint
+        uint256 date_of_complaint,
+        address 
     ) {
         return (
             name,
@@ -96,7 +97,8 @@ contract Complaint is Ownable {
             complaint,
             evidence,
             complaint_against,
-            date_of_complaint
+            date_of_complaint,
+            address(this)
         );
     }
 }

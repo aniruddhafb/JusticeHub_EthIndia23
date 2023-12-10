@@ -34,14 +34,16 @@ import { view_complaint } from "../../utils/contract_funcs";
 const view_complaints = ({ walletAddress, signer, provider }) => {
   const [complaints, set_complaints] = useState([]);
   const [loading, set_loading] = useState(false);
+  const [complaint, selected_complaint] = useState("");
+  const [complaint_infor, set_complaint_info] = useState("");
 
   const handleClick = (newSize) => {
-    setSize(newSize)
-    onOpen()
-  }
+    setSize(newSize);
+    onOpen();
+  };
 
-  const [size, setSize] = React.useState('')
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [size, setSize] = React.useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const fetch_complaints = async () => {
     set_loading(true);
@@ -57,6 +59,13 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
     );
     set_complaints(_complaints);
     set_loading(false);
+  };
+
+  const complaint_info = async (complaint_addr) => {
+    console.log({ complaint_addr });
+    const res = await view_complaint(signer, complaint_addr);
+    console.log(res);
+    set_complaint_info(res);
   };
 
   useEffect(() => {
@@ -85,16 +94,42 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
             <h2>View Complaints</h2>
           </div>
         </div>
-        <div className="contentContainerBody contentContainerBodyFlex" style={{ flexDirection: "column" }}>
-          <Stack spacing={[3, 3]} direction={['column']} style={{ background: "white", padding: "40px", borderRadius: "6px", marginBottom: "30px" }}>
-            <Text mb='8px'>Search for fir's with registered fir number or person name</Text>
-            <Input placeholder='search for fir' />
+        <div
+          className="contentContainerBody contentContainerBodyFlex"
+          style={{ flexDirection: "column" }}
+        >
+          <Stack
+            spacing={[3, 3]}
+            direction={["column"]}
+            style={{
+              background: "white",
+              padding: "40px",
+              borderRadius: "6px",
+              marginBottom: "30px",
+            }}
+          >
+            <Text mb="8px">
+              Search for fir's with registered fir number or person name
+            </Text>
+            <Input placeholder="search for fir" />
           </Stack>
 
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap", marginTop: "15px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexWrap: "wrap",
+              marginTop: "15px",
+            }}
+          >
             {complaints?.map((e) => {
               return (
                 <Card
+                  onClick={() => {
+                    complaint_info(e.complaint_addr);
+                  }}
+                  BtnModal
                   direction={{ base: "column", sm: "row" }}
                   overflow="hidden"
                   variant="outline"
@@ -108,44 +143,44 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
                     </CardBody>
 
                     <CardFooter>
-                        <Button variant="solid" colorScheme="blue"
-                          onClick={() => handleClick(size)}
-                          key={size}
-                          m={4}
-                        >
-                          View
-                        </Button>
+                      <Button
+                        variant="solid"
+                        colorScheme="blue"
+                        onClick={() => handleClick(size)}
+                        key={size}
+                        m={4}
+                      >
+                        View
+                      </Button>
 
                       <Drawer onClose={onClose} isOpen={isOpen} size={size}>
                         <DrawerOverlay />
                         <DrawerContent>
                           <DrawerCloseButton />
-                          <DrawerHeader>{` drawer contents`}</DrawerHeader>
+                          <DrawerHeader>{complaint_infor?.name}</DrawerHeader>
                           <DrawerBody>
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                              Consequat nisl vel pretium lectus quam id. Semper quis lectus
-                              nulla at volutpat diam ut venenatis. Dolor morbi non arcu risus
-                              quis varius quam quisque. Massa ultricies mi quis hendrerit dolor
-                              magna eget est lorem. Erat imperdiet sed euismod nisi porta.
-                              Lectus vestibulum mattis ullamcorper velit.
-                            </p>
+                            <p>{complaint_infor?.complaint}</p>
                           </DrawerBody>
+                          <Image
+                            alt="nftPreview"
+                            width={100}
+                            height={100}
+                            src={complaint_infor?.evidence?.replace(
+                              "ipfs://",
+                              "https://ipfs.io/ipfs/"
+                            )}
+                          ></Image>
                         </DrawerContent>
                       </Drawer>
-
                     </CardFooter>
                   </Stack>
                 </Card>
               );
             })}
-            {(complaints?.length <= 0 && !loading) &&
+            {complaints?.length <= 0 && !loading && (
               <Text>No complaints found!!</Text>
-            }
-            {loading &&
-              <Spinner />
-            }
+            )}
+            {loading && <Spinner />}
           </div>
         </div>
       </div>
