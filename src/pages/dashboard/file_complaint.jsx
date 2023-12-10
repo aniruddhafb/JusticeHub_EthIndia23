@@ -13,6 +13,7 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
   const [data, set_data] = useState({
     name: "",
     contact_num: "",
+    complaint_against: "",
     address: "",
     email: "",
     complaint: "",
@@ -26,6 +27,7 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
   const storage = useStorage();
 
   const handle_submit = async () => {
+    console.log(data);
     const res = await storage?.upload(data.evidence);
     const new_data = { ...data, evidence: res };
     upload_fir(signer, new_data, walletAddress);
@@ -93,13 +95,13 @@ const file_complaint = ({ provider, signer, walletAddress }) => {
               onChange={handle_change}
               placeholder="Your Address"
             />
-
-            {/* <Text mb="-8px">complaint against *</Text>
+            <Text mb="-8px">Complaint Against</Text>
             <Input
-              name=""
+              name="complaint_against"
+              type="text"
               onChange={handle_change}
-              placeholder="Name of Person you want to raise complaint"
-            /> */}
+              placeholder="Name of that person"
+            />
 
             <Text mb="-8px">your complaint in detail *</Text>
             <Textarea
