@@ -19,8 +19,8 @@ import React, { useEffect, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import { get_user_complaints } from "../utils/user";
-import { view_complaint } from "../utils/contract_funcs";
+import { get_user_complaints } from "../../utils/user";
+import { view_complaint } from "../../utils/contract_funcs";
 
 const view_complaints = ({ walletAddress, signer, provider }) => {
   const [complaints, set_complaints] = useState([]);
@@ -32,11 +32,11 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
     await Promise.all(
       res.message.map(async (e) => {
         const res = await view_complaint(signer, e.complaint);
+        console.log(res);
         _complaints.push(res);
       })
     );
-    console.log(_complaints);
-    set_complaints(complaints);
+    set_complaints(_complaints);
   };
 
   useEffect(() => {
@@ -66,27 +66,32 @@ const view_complaints = ({ walletAddress, signer, provider }) => {
           </div>
         </div>
         <div className="contentContainerBody contentContainerBodyFlex">
-          {complaints?.map((e) => (
-            <Card
-              direction={{ base: "column", sm: "row" }}
-              overflow="hidden"
-              variant="outline"
-            >
-              <Stack>
-                <CardBody>
-                  <Heading size="md">{e?.name}</Heading>
+          {complaints?.map((e) => {
+            console.log({ complaints });
+            return (
+              <Card
+                direction={{ base: "column", sm: "row" }}
+                overflow="hidden"
+                variant="outline"
+              >
+                <Stack>
+                  <CardBody>
+                    <Heading size="md">{e?.name}</Heading>
 
-                  <Text py="2">{e?.complaint}</Text>
-                </CardBody>
+                    <Text py="2">{e?.complaint}</Text>
+                  </CardBody>
 
-                <CardFooter>
-                  <Button variant="solid" colorScheme="blue">
-                    Buy Latte
-                  </Button>
-                </CardFooter>
-              </Stack>
-            </Card>
-          ))}
+                  <CardFooter>
+                    <Link href={"/"}>
+                      <Button variant="solid" colorScheme="blue">
+                        View
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Stack>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 const { ethers, Contract } = require("ethers");
-const Factory_Abi = require("../../../abi/Complaint_Factory.abi.json");
-const ComplaintABI = require("../../../abi/Complaint.abi.json");
+const Factory_Abi = require("../../abi/Complaint_Factory.abi.json");
+const ComplaintABI = require("../../abi/Complaint.abi.json");
 const { useStorageUpload } = require("@thirdweb-dev/react");
 import { create_complaint } from "./user";
 const FACTORY_ADDR = "0x281ACd214c8267DE753e9DEDF4583c211dBeC1BE";
@@ -79,12 +79,18 @@ export const view_complaint = async (signer, complaint_addr) => {
   const address = await contract._address();
   const email = await contract.email();
   const complaint = await contract.complaint();
+  const evidence = await contract.evidence();
+  const complaint_against = await contract.complaint_against();
+  const date_of_complaint = await contract.date_of_complaint();
   const data = {
     name,
     contact_num: contact_num.toString(),
     address,
     email,
     complaint,
+    evidence,
+    complaint_against,
+    date_of_complaint,
   };
   return data;
 };
